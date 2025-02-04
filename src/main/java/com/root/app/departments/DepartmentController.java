@@ -1,6 +1,8 @@
 package com.root.app.departments;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
@@ -42,6 +44,9 @@ public class DepartmentController extends HttpServlet {
 	 * 		2) a 태그 사용 - GET
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		try {
 		// TODO Auto-generated method stub
 		String method = request.getMethod();
 		StringBuffer sb = request.getRequestURL();
@@ -57,9 +62,44 @@ public class DepartmentController extends HttpServlet {
 		this.useSubString(uri);
 		
 		if(st.equals("list.do")) {
-//			departmentDAO.getList();
+			List<DepartmentDTO> ar = departmentDAO.getList();
+			
+			PrintWriter p = response.getWriter();
+			p.println("<h1>Department List</h1>");
+			
+			p.println("<h3>");
+			p.println(ar.get(0).getDepartment_id());
+			p.println("</h3>");
+			
+			p.println("<h3>"+ar.get(0).getDepartment_name()+"</h3>");
+			
+			
+			for(int i = 0; i < ar.size(); i++) {
+				p.println("<h3>"+ar.get(i).getDepartment_id()+"\t"+ar.get(i).getDepartment_name()+"</h3>");
+			}
+			
+			p.println("<table border=1>");
+			p.println("<thead>");
+			p.println("<tr>");
+			p.println("<th>Department_ID</th>");
+			p.println("<th>Department_Name</th>");
+			p.println("</tr");
+			p.println("</thead>");
+			for(int i = 0; i < ar.size(); i++) {
+				p.println("<tr>");
+				p.println("<td>"+ar.get(i).getDepartment_id()+"</td>");
+				p.println("<td>"+ar.get(i).getDepartment_name()+"</td>");
+				p.println("</tr>");
+			}
+			p.println("</table>");
+			
+			p.close();
+			
 		}else if(st.equals("detail.do")) {
 			departmentDAO.getDetail();
+		}
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 	
