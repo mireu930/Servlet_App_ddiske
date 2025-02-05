@@ -46,6 +46,10 @@ public class DepartmentController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		
+		// parameter
+		String department_id = request.getParameter("department_id");
+		
 		try {
 		// TODO Auto-generated method stub
 		String method = request.getMethod();
@@ -96,7 +100,7 @@ public class DepartmentController extends HttpServlet {
 			p.close();
 			
 		}else if(st.equals("detail.do")) {
-			departmentDAO.getDetail();
+//			departmentDAO.getDetail();
 		}
 		}catch (Exception e) {
 			e.printStackTrace();

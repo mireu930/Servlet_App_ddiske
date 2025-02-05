@@ -12,17 +12,17 @@ import com.root.app.utils.DBConnection;
 public class LocationDAO {
 	
 	public List<LocationDTO> getList() throws Exception {
-		System.out.println("지역 리스트 조회");
+		
 		Connection connection = DBConnection.getConnection();
 		String sql = "SELECT * FROM LOCATIONS";
 		PreparedStatement st = connection.prepareStatement(sql);
 		
 		ResultSet rs = st.executeQuery();
 		
-		LocationDTO locationDTO = new LocationDTO();
 		List<LocationDTO> ar = new ArrayList<LocationDTO>();
 		
 		while(rs.next()) {
+			LocationDTO locationDTO = new LocationDTO();
 			locationDTO.setLocation_id(rs.getInt("LOCATION_ID"));
 			locationDTO.setStreet_address(rs.getString("STREET_ADDRESS"));
 			locationDTO.setPostal_code(rs.getString("POSTAL_CODE"));
@@ -38,15 +38,15 @@ public class LocationDAO {
 		
 	}
 	
-	public LocationDTO getDetail(int data) throws Exception {
-		System.out.println("지역 정보 조회");
+	public LocationDTO getDetail(LocationDTO locationDTO) throws Exception {
+		
 		Connection connection = DBConnection.getConnection();
 		String sql = "SELECT * FROM LOCATIONS WHERE LOCATION_ID = ?";
 		PreparedStatement st = connection.prepareStatement(sql);
-		st.setInt(1, data);
+		st.setInt(1, locationDTO.getLocation_id());
 		ResultSet rs = st.executeQuery();
 		
-		LocationDTO locationDTO = new LocationDTO();
+		locationDTO = new LocationDTO();
 		
 		if(rs.next()) {
 			locationDTO.setLocation_id(rs.getInt("LOCATION_ID"));
@@ -56,7 +56,7 @@ public class LocationDAO {
 			locationDTO.setState_province(rs.getString("STATE_PROVINCE"));
 			locationDTO.setCountry_id(rs.getString("COUNTRY_ID"));
 		}else {
-			System.out.println("해당 정보 없음");
+			locationDTO = null;
 		}
 		
 		DBConnection.disConnect(rs, st, connection);

@@ -11,8 +11,14 @@ public class LocationDAOTest {
 		LocationDAO locationDAO = new LocationDAO();
 		
 		try {
-			LocationDTO locationDTO = locationDAO.getDetail(1100);
-			System.out.println(locationDTO.getCity());
+			LocationDTO locationDTO = new LocationDTO();
+			List<LocationDTO> ar = locationDAO.getList();
+			System.out.println(ar.size());
+			for(int i = 0; i < ar.size(); i++) {
+				System.out.println(ar.get(i).getLocation_id());
+				System.out.println(ar.get(i).getCity());
+			}
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
