@@ -10,6 +10,8 @@
 
 	<form action="./study_paramProcess.jsp" method="get">
 		<div>
+		<!--  readonly 읽기 전용이며 수정불가 파라미터로 사용가능 -->
+		<!--  disabled 읽기 전용이며 수정불가 파라미터로 사용불가 -->
 			<input type="text" name="p1" value="p1 data" readonly>
 		</div>
 		<div>
