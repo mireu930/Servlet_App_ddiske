@@ -6,7 +6,7 @@
 
 <%
 	
-	// 스크립툴릿 자바코드 안에 사용하는
+	// 스크립틀릿 자바코드 안에 사용하는
 	DepartmentDAO departmentDAO = new DepartmentDAO();
 	List<DepartmentDTO> ar = departmentDAO.getList();
 
@@ -17,7 +17,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-	
+	table {
+	border: 1px solid black;
+	margin: 0 auto;
+	width: 50%;
+	}
+	table tr, td, th {
+	border: 1px solid black;
+	}
 </style>
 </head>
 <body>
@@ -43,5 +50,9 @@
 		</tbody>
 		
 	</table>
+	
+	<div>
+		<a href="./add.jsp">부서등록</a>
+	</div>
 </body>
 </html>

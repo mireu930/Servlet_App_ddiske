@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.transform.Result;
+
 import com.root.app.utils.DBConnection;
 
 public class DepartmentDAO {
@@ -14,7 +16,7 @@ public class DepartmentDAO {
 		// 1. Connection
 		Connection connection = DBConnection.getConnection();		
 		// 2. Sql문 생성
-		String sql = "SELECT * FROM DEPARTMENTS";
+		String sql = "SELECT * FROM DEPARTMENTS ORDER BY DEPARTMENT_ID DESC";
 		// 3. 미리 전송
 		PreparedStatement st = connection.prepareStatement(sql);
 		// 4. ? 처리
@@ -58,6 +60,24 @@ public class DepartmentDAO {
 		
 		return departmentDTO;
 		
+	}
+	
+	public int add (DepartmentDTO departmentDTO) throws Exception{
+		int result = 0;
+		Connection connection = DBConnection.getConnection();
+		String sql = "INSERT INTO DEPARTMENTS (DEPARTMENT_ID, DEPARTMENT_NAME, MANAGER_ID, LOCATION_ID)"
+				+ " VALUES (DEPARTMENTS_SEQ.NEXTVAL, ?, ?, ?)";
+		PreparedStatement st = connection.prepareStatement(sql);
+		
+		st.setString(1, departmentDTO.getDepartment_name());
+		st.setLong(2, departmentDTO.getManager_id());
+		st.setLong(3, departmentDTO.getLocation_id());
+		
+		result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
+		
+		return result;
 	}
 
 }

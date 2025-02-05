@@ -13,6 +13,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	table {
+	border: 1px solid black;
+	margin: 0 auto;
+	width: 50%;
+	}
+	table tr, td, th {
+	border: 1px solid black;
+	}
+</style>
 </head>
 <body>
 	<h1>Location list</h1>
@@ -34,5 +44,7 @@
 			<%} %>
 		</tbody>
 	</table>
+	
+	<a href="./add.jsp">추가</a>
 </body>
 </html>
