@@ -81,5 +81,38 @@ public class LocationDAO {
 		
 		return result;
 	}
+	
+	
+	public int delete(LocationDTO locationDTO) throws Exception {
+		int result = 0;
+		Connection connection = DBConnection.getConnection();
+		String sql = "DELETE LOCATIONS WHERE LOCATION_ID = ?";
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setInt(1, locationDTO.getLocation_id());
+		result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
+		
+		return result;
+	}
+	
+	
+	public int update(LocationDTO locationDTO) throws Exception {
+		int result = 0;
+		Connection connection = DBConnection.getConnection();
+		String sql = "UPDATE LOCATIONS SET STREET_ADDRESS = ?, POSTAL_CODE = ?, STATE_PROVINCE = ?,"
+				+ " CITY = ?, COUNTRY_ID = ? WHERE LOCATION_ID = ?";
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setString(1, locationDTO.getStreet_address());
+		st.setString(2, locationDTO.getPostal_code());
+		st.setString(3, locationDTO.getState_province());
+		st.setString(4, locationDTO.getCity());
+		st.setString(5, locationDTO.getCountry_id());
+		st.setInt(6, locationDTO.getLocation_id());
+		
+		result = st.executeUpdate();
+		
+		return result;
+	}
 
 }

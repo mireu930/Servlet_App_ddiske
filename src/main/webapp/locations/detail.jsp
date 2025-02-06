@@ -23,6 +23,9 @@
 		<h3><%= locationDTO.getCity() %></h3>
 		<h3><%= locationDTO.getStreet_address() %></h3>
 		<h3><%= locationDTO.getPostal_code() %></h3>
+		
+		<a href="./update.jsp?location_id=<%= locationDTO.getLocation_id() %>">수정하기</a>
+		<a href="./deleteProcess.jsp?location_id=<%= locationDTO.getLocation_id() %>">삭제</a>
 	<%}else { %>
 		<h3>없는 지역</h3>
 	<%} %>

@@ -79,5 +79,40 @@ public class DepartmentDAO {
 		
 		return result;
 	}
+	
+	
+	// 부서 삭제
+	public int delete (DepartmentDTO departmentDTO) throws Exception {
+		int result = 0;
+		Connection connection = DBConnection.getConnection();
+		String sql = "DELETE DEPARTMENTS WHERE DEPARTMENT_ID = ?";
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setLong(1, departmentDTO.getDepartment_id());
+		result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
+		
+		return result;
+	}
+	
+	
+	// 부서 수정
+	public int update (DepartmentDTO departmentDTO) throws Exception {
+		int result = 0;
+		Connection connection = DBConnection.getConnection();
+		String sql = "UPDATE DEPARTMENTS SET DEPARTMENT_NAME=?, MANAGER_ID=?, LOCATION_ID=?"
+				+ " WHERE DEPARTMENT_ID = ?";
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setString(1, departmentDTO.getDepartment_name());
+		st.setLong(2, departmentDTO.getManager_id());
+		st.setLong(3, departmentDTO.getLocation_id());
+		st.setLong(4, departmentDTO.getDepartment_id());
+		
+		result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
+		
+		return result;
+	}
 
 }
