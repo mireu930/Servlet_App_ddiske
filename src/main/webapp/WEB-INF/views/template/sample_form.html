@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    fieldset {
+      border:0;
+    }
+
+    input[type=text] {
+      width: 100%;
+      padding:12px 20px;
+      margin: 8px 0;
+      box-sizing:border-box;
+      border:1px solid #555;
+    }
+
+    input[type =text]:focus {
+      background-color: lightblue;
+    }
+
+    input[type=submit]{
+      margin: 0 50%;
+      width: 10%;
+      height: 30px;
+      background-color: rgb(180, 178, 178);
+      border-radius: 10px;
+    }
+
+    input[type=submit] span:before {
+      width: 2px;
+      height: 0%;
+    }
+
+    input[type=submit] span:before {
+      width: 0%;
+      height: 2px;
+    }
+
+    input[type=submit]:hover {
+      background-color: transparent;
+      
+    }
+
+    input[type=submit] span:hover:before{
+      height: 100%;
+    }
+
+    input[type=submit] span:hover:after{
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    
+    <fieldset>
+      
+      <label for ="p1">축구</label>
+      <input type = "checkbox" id = "p1">
+      <label for ="p2">야구</label>
+      <input type = "checkbox" id = "p2">
+      <label for ="p3">배구</label>
+      <input type = "checkbox" id = "p3">
+      <label for ="p4">농구</label>
+      <input type = "checkbox" id = "p4">
+    </fieldset>
+
+    <fieldset>
+      <legend>아이디</legend>
+        <input type = "text" name = "department_name" value = "test">
+    </fieldset>
+    <fieldset>
+      <legend>비밀번호</legend>
+      <input type = "text" name = "manager_id" value = "test2">
+    </fieldset>
+      <fieldset>
+        <input type = "submit" value ="등록">
+      </fieldset>
+          
+    
+  </form>
+</body>
+</html>
