@@ -55,6 +55,11 @@ public class LocationService {
     	if(result>0) {
     		message = "추가성공";
     	}
+    	
+    	request.setAttribute("result", message);
+		actionFoward.setFlag(true);
+		actionFoward.setPath("/WEB-INF/views/common/result2.jsp");
+    	
 	}
 	public void update(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
 		LocationDTO locationDTO = new LocationDTO();
@@ -105,6 +110,6 @@ public class LocationService {
 		
     	request.setAttribute("result", message);
 		actionFoward.setFlag(true);
-		actionFoward.setPath("/WEB-INF/views/commons/result.jsp");
+		actionFoward.setPath("/WEB-INF/views/common/result2.jsp");
 	}
 }
