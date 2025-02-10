@@ -6,21 +6,23 @@
 
 <%
 // 스크립틀릿 자바코드 안에 사용하는
-DepartmentDAO departmentDAO = new DepartmentDAO();
-List<DepartmentDTO> ar = departmentDAO.getList();
+// DepartmentDAO departmentDAO = new DepartmentDAO();
+// List<DepartmentDTO> ar = departmentDAO.getList();
+	Object list = request.getAttribute("list");
+	List<DepartmentDTO> ar = (List<DepartmentDTO>)list;
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/template/common.jsp"%>
+<%@include file="../template/common.jsp"%>
 <link rel="stylesheet" href="/resources/css/list.css">
 </head>
 <body>
-	<%@include file="/template/header.jsp"%>
+	<%@include file="../template/header.jsp"%>
 	<section class="contents wrap_left">
-		<%@include file="/template/nav.jsp"%>
+		<%@include file="../template/nav.jsp"%>
 		<div class="contents_right right">
 		<div class="contents_right_list">
 			<table class="table_sprite">
@@ -37,7 +39,7 @@ List<DepartmentDTO> ar = departmentDAO.getList();
 					<tr>
 						<td><%=ar.get(i).getDepartment_id()%></td>
 						<td><a
-							href="./detail.jsp?department_id=<%=ar.get(i).getDepartment_id()%>">
+							href="./detail.do?department_id=<%=ar.get(i).getDepartment_id()%>">
 								<%=ar.get(i).getDepartment_name()%>
 						</a></td>
 					</tr>

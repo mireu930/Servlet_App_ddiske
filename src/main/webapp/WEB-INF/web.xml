@@ -9,4 +9,37 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 배포서술자 DD -->
+  
+  <!-- Servlet 객체 생성 -> 클래스명 참조변수명 = new 생성자(); FQDN(Full Quality Domain Name) -->
+  <servlet>
+  	<servlet-name>
+  		homeController
+  	</servlet-name>
+  	<servlet-class>
+  		com.root.app.HomeController
+  	</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>
+  		departmentController
+  	</servlet-name>
+  	<servlet-class>
+  		com.root.app.departments.DepartmentController
+  	</servlet-class>
+  </servlet>
+  
+  <!-- 어떤 요청이 왔을 때 누구를 실행 -->
+  <servlet-mapping>
+  	<servlet-name>homeController</servlet-name>
+  	<url-pattern>/index.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>departmentController</servlet-name>
+  	<url-pattern>/departments/*</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

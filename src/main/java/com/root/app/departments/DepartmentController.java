@@ -2,9 +2,11 @@ package com.root.app.departments;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/DepartmentController")
 public class DepartmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private DepartmentDAO departmentDAO;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -24,6 +27,7 @@ public class DepartmentController extends HttpServlet {
     public DepartmentController() {
         super();
         // TODO Auto-generated constructor stub
+        departmentDAO = new DepartmentDAO();
     }
 
 	/**
@@ -44,73 +48,116 @@ public class DepartmentController extends HttpServlet {
 	 * 		2) a 태그 사용 - GET
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		response.setCharacterEncoding("UTF-8");
+//		request.setCharacterEncoding("UTF-8");
+//		response.setCharacterEncoding("UTF-8");
+//		
+//		// parameter
+//		String department_id = request.getParameter("department_id");
+//		
+//		try {
+//		// TODO Auto-generated method stub
+//		String method = request.getMethod();
+//		StringBuffer sb = request.getRequestURL();
+//		String uri = request.getRequestURI();
+//		System.out.println(method);
+//		System.out.println(sb.toString());
+//		System.out.println(uri);
+//		
+//		DepartmentDAO departmentDAO = new DepartmentDAO();
+//		String [] str = uri.split("/");
+//		String st = str [str.length-1];
+//		System.out.println(st);
+//		this.useSubString(uri);
+//		
+//		if(st.equals("list.do")) {
+//			List<DepartmentDTO> ar = departmentDAO.getList();
+//			
+//			PrintWriter p = response.getWriter();
+//			p.println("<h1>Department List</h1>");
+//			
+//			p.println("<h3>");
+//			p.println(ar.get(0).getDepartment_id());
+//			p.println("</h3>");
+//			
+//			p.println("<h3>"+ar.get(0).getDepartment_name()+"</h3>");
+//			
+//			
+//			for(int i = 0; i < ar.size(); i++) {
+//				p.println("<h3>"+ar.get(i).getDepartment_id()+"\t"+ar.get(i).getDepartment_name()+"</h3>");
+//			}
+//			
+//			p.println("<table border=1>");
+//			p.println("<thead>");
+//			p.println("<tr>");
+//			p.println("<th>Department_ID</th>");
+//			p.println("<th>Department_Name</th>");
+//			p.println("</tr");
+//			p.println("</thead>");
+//			for(int i = 0; i < ar.size(); i++) {
+//				p.println("<tr>");
+//				p.println("<td>"+ar.get(i).getDepartment_id()+"</td>");
+//				p.println("<td>"+ar.get(i).getDepartment_name()+"</td>");
+//				p.println("</tr>");
+//			}
+//			p.println("</table>");
+//			
+//			p.close();
+//			
+//		}else if(st.equals("detail.do")) {
+////			departmentDAO.getDetail();
+//		}
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//		}
 		
-		// parameter
-		String department_id = request.getParameter("department_id");
+		String url = request.getRequestURI();
+		String result = url.substring(url.lastIndexOf("/")+1);
+		System.out.println(result);
+		
+		String path = "";
 		
 		try {
-		// TODO Auto-generated method stub
-		String method = request.getMethod();
-		StringBuffer sb = request.getRequestURL();
-		String uri = request.getRequestURI();
-		System.out.println(method);
-		System.out.println(sb.toString());
-		System.out.println(uri);
-		
-		DepartmentDAO departmentDAO = new DepartmentDAO();
-		String [] str = uri.split("/");
-		String st = str [str.length-1];
-		System.out.println(st);
-		this.useSubString(uri);
-		
-		if(st.equals("list.do")) {
-			List<DepartmentDTO> ar = departmentDAO.getList();
-			
-			PrintWriter p = response.getWriter();
-			p.println("<h1>Department List</h1>");
-			
-			p.println("<h3>");
-			p.println(ar.get(0).getDepartment_id());
-			p.println("</h3>");
-			
-			p.println("<h3>"+ar.get(0).getDepartment_name()+"</h3>");
-			
-			
-			for(int i = 0; i < ar.size(); i++) {
-				p.println("<h3>"+ar.get(i).getDepartment_id()+"\t"+ar.get(i).getDepartment_name()+"</h3>");
+			switch (result) {
+			case "list.do" :
+				path = "/WEB-INF/views/departments/list.jsp";
+				List<DepartmentDTO> ar = departmentDAO.getList();
+				
+				//attribute : 속성 (key - String, value - Object)
+				request.setAttribute("list", ar);
+				break;
+			case "detail.do" :
+				path = "/WEB-INF/views/departments/detail.jsp";
+				DepartmentDTO departmentDTO = new DepartmentDTO();
+				departmentDTO.setDepartment_id(Long.parseLong(request.getParameter("department_id")));
+				departmentDTO = departmentDAO.getDetail(departmentDTO);
+				request.setAttribute("dto", departmentDTO);
+				break;
 			}
-			
-			p.println("<table border=1>");
-			p.println("<thead>");
-			p.println("<tr>");
-			p.println("<th>Department_ID</th>");
-			p.println("<th>Department_Name</th>");
-			p.println("</tr");
-			p.println("</thead>");
-			for(int i = 0; i < ar.size(); i++) {
-				p.println("<tr>");
-				p.println("<td>"+ar.get(i).getDepartment_id()+"</td>");
-				p.println("<td>"+ar.get(i).getDepartment_name()+"</td>");
-				p.println("</tr>");
-			}
-			p.println("</table>");
-			
-			p.close();
-			
-		}else if(st.equals("detail.do")) {
-//			departmentDAO.getDetail();
+		}catch(Exception e) {
+				e.printStackTrace();	
 		}
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+		
+		RequestDispatcher view = request.getRequestDispatcher(path);
+		view.forward(request, response);
+		
+//		try {
+//		DepartmentDAO departmentDAO = new DepartmentDAO();
+//		List<DepartmentDTO> ar = departmentDAO.getList();
+//		
+//		//attribute : 속성 (key - String, value - Object)
+//		request.setAttribute("list", ar);
+//		
+//		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/departments/list.jsp");
+//		view.forward(request, response);
+//		}catch (Exception e) {
+//			e.printStackTrace();
+//		}
 	}
 	
-	private void useSubString(String data) {
-		String result = data.substring(data.lastIndexOf("/")+1);
-		System.out.println(result);
-	}
+//	private void useSubString(String data) {
+//		String result = data.substring(data.lastIndexOf("/")+1);
+//		System.out.println(result);
+//	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
