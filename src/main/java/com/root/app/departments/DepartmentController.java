@@ -13,13 +13,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.root.app.ActionForward;
+
 /**
  * Servlet implementation class DepartmentController
  */
 @WebServlet("/DepartmentController")
 public class DepartmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private DepartmentDAO departmentDAO;
+	private DepartmentService departmentService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -27,7 +29,7 @@ public class DepartmentController extends HttpServlet {
     public DepartmentController() {
         super();
         // TODO Auto-generated constructor stub
-        departmentDAO = new DepartmentDAO();
+        departmentService = new DepartmentService();
     }
 
 	/**
@@ -111,33 +113,62 @@ public class DepartmentController extends HttpServlet {
 //		}
 		
 		String url = request.getRequestURI();
-		String result = url.substring(url.lastIndexOf("/")+1);
-		System.out.println(result);
+		url = url.substring(url.lastIndexOf("/")+1);
+		
 		
 		String path = "";
 		
+		ActionForward actionForward = new ActionForward();
+		actionForward.setFlag(true);
+		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
+		
 		try {
-			switch (result) {
+			switch (url) {
 			case "list.do" :
-				path = "/WEB-INF/views/departments/list.jsp";
-				List<DepartmentDTO> ar = departmentDAO.getList();
+//				path = "/WEB-INF/views/departments/list.jsp";
+				departmentService.getList(request, actionForward);
+				
 				
 				//attribute : 속성 (key - String, value - Object)
-				request.setAttribute("list", ar);
+//				List<DepartmentDTO> ar = departmentDAO.getList();
+//				request.setAttribute("list", ar);
 				break;
 			case "detail.do" :
-				path = "/WEB-INF/views/departments/detail.jsp";
-				DepartmentDTO departmentDTO = new DepartmentDTO();
-				departmentDTO.setDepartment_id(Long.parseLong(request.getParameter("department_id")));
-				departmentDTO = departmentDAO.getDetail(departmentDTO);
-				request.setAttribute("dto", departmentDTO);
+//				path = "/WEB-INF/views/departments/detail.jsp";
+				departmentService.getDetail(request, actionForward);
+				
+//				DepartmentDTO departmentDTO = new DepartmentDTO();
+//				departmentDTO.setDepartment_id(Long.parseLong(request.getParameter("department_id")));
+//				departmentDTO = departmentDAO.getDetail(departmentDTO);
+//				request.setAttribute("dto", departmentDTO);
+				break;
+			case "add.do" :
+				String method = request.getMethod();
+				if(method.equalsIgnoreCase("post")) {
+					departmentService.add(request, actionForward);
+				}else {
+					actionForward.setFlag(true);
+					actionForward.setPath("/WEB-INF/views/departments/add.jsp");
+				}
+				break;
+			case "update.do" :
+				String mthd = request.getMethod();
+				if(mthd.equalsIgnoreCase("post")) {
+					departmentService.updateProcess(request, actionForward);
+				}else {
+					departmentService.update(request, actionForward);
+					
+				}
+				break;
+			case "delete.do" :
+				departmentService.delete(request, actionForward);
 				break;
 			}
 		}catch(Exception e) {
 				e.printStackTrace();	
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher(path);
+		RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 		view.forward(request, response);
 		
 //		try {

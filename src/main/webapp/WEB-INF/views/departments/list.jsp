@@ -52,7 +52,7 @@
 			</div>
 
 			<div>
-				<a href="./add.jsp">부서등록</a>
+				<a href="./add.do">부서등록</a>
 			</div>
 
 		</div>
