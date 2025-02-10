@@ -9,7 +9,7 @@
 <body>
 지역등록하기
 <form action="./locationAdd.do" method ="post">
-	지역주소<input type = "text" name = "street_addess">
+	지역주소<input type = "text" name = "street_address">
 	우편번호<input type = "text" name = "postal_code">
 	city<input type = "text" name = "city">
 	<input type = "submit" value = "등록" >
