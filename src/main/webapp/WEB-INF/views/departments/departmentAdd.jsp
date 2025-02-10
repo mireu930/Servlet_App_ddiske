@@ -15,7 +15,7 @@
 </head>
 <body>
 	<h3>부서추가</h3>
-	<form action = "./departmentAddProcess.jsp" method ="post">
+	<form action = "./departmentAdd.do" method ="post">
 		<fieldset>
       <legend>부서번호</legend>
         <input type = "text" name = "department_name">

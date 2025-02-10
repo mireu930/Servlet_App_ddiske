@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.root.app.ActionFoward;
+
 /**
  * Servlet implementation class DepartmentController
  */
@@ -19,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 public class DepartmentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     private DepartmentDAO departmentDAO;  
+    private departmentService departmentService;
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -26,6 +29,7 @@ public class DepartmentController extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
         departmentDAO = new DepartmentDAO();
+        departmentService = new departmentService();
     }
 
 	/**
@@ -55,47 +59,48 @@ public class DepartmentController extends HttpServlet {
 		
 		System.out.println(result);
 		
-		String path = "";
-		
+		ActionFoward actionFoward = new ActionFoward();
+		actionFoward.setFlag(true);
+		actionFoward.setPath("/WEB-INF/views/errors/notfound.jsp");
 		try {
 		
 			if(result.equals("departmentList.do")) {
-				path = "/WEB-INF/views/departments/departmentList.jsp";
-				List<DepartmentDTO> ar = departmentDAO.getList();
 				
-				request.setAttribute("list", ar);
+				departmentService.getList(request, actionFoward);
 			} else if(result.equals("departmentDetail.do")) {
-				path = "/WEB-INF/views/departments/departmentDetail.jsp";
-				String id = request.getParameter("department_id");
-				DepartmentDTO departmentDTO = new DepartmentDTO();
-				departmentDTO.setDepartment_id(Long.parseLong(id));
-				departmentDTO = departmentDAO.getDetail(departmentDTO);
-				request.setAttribute("dto", departmentDTO);
+				
+				departmentService.getDetail(request, actionFoward);
+			} else if(result.equals("departmentAdd.do")) {
+				String method = request.getMethod();
+				if(method.toUpperCase().equals("post")) {
+					departmentService.add(request, actionFoward);
+					
+				} else {
+					actionFoward.setFlag(true);
+					actionFoward.setPath("/WEB-INF/views/departments/departmentAdd.jsp");
+				}
+			} else if(result.equals("departmentUpdateProcess.do")) {
+				String method = request.getMethod();
+				if(method.toUpperCase().equals("post")) {
+					departmentService.updateProcess(request, actionFoward);
+					
+				} else {
+					departmentService.update(request, actionFoward);
+//					actionFoward.setFlag(true);
+//					actionFoward.setPath("/WEB-INF/views/departments/departmentUpdateProcess.jsp");
+				}
+			} else if(result.equals("departmentDeleteProcess.do")) {
+				departmentService.delete(request, actionFoward);
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher(path);
+		RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
 		view.forward(request, response);
 			
-//		try {
-//		DepartmentDAO departmentDAO = new DepartmentDAO();
-//		List<DepartmentDTO> ar = departmentDAO.getList();
-//		
-//		request.setAttribute("list", ar);
-//		
-//		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/departments/departmentList.jsp");
-//		view.forward(request, response);
-//		}catch(Exception e) {
-//			e.printStackTrace();
-//		}
 	}
 	
-//	private void useSubString(String data) {
-//		String result = data.substring(data.lastIndexOf("/")+1);
-//		System.out.println(result);
-//	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

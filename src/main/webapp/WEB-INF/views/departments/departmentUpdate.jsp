@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	String id = request.getParameter("department_id");
+    String id = request.getParameter("department_id");
     String name = request.getParameter("department_name");
     String m = request.getParameter("manager_id");
     String i = request.getParameter("location_id");

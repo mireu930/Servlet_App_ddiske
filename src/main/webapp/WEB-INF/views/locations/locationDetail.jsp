@@ -4,12 +4,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-LocationDAO dao = new LocationDAO();
-LocationDTO dto = new LocationDTO();
-String id = request.getParameter("location_id");
-dto.setLocation_id(Integer.parseInt(id));
-
-dto = dao.getDetail(dto);
+	LocationDTO dto = (LocationDTO)request.getAttribute("dto");
 %>
 <html>
 <head>
@@ -37,8 +32,8 @@ table, table th, table td {
 			<tr>
 				<td><%=dto.getLocation_id()%></td>
 				<td><%=dto.getStreet_address()%></td>
-				<td><a href = "./locationDeleteProcess.jsp?location_id=<%=dto.getLocation_id()%>">삭제</a></td>
-				<td><a href ="./locationUpdate.jsp?location_id=<%=dto.getLocation_id()%>">수정</a></td>
+				<td><a href = "./locationDeleteProcess.do?location_id=<%=dto.getLocation_id()%>">삭제</a></td>
+				<td><a href ="./locationUpdate.do?location_id=<%=dto.getLocation_id()%>">수정</a></td>
 				<%} else {%>
 				<h3>없는 아이디입니다.</h3>
 				<%}%>

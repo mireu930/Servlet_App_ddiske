@@ -3,12 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	String id = request.getParameter("location_id");
-    	LocationDAO locationDAO = new LocationDAO();
-    	LocationDTO locationDTO = new LocationDTO();
-    	
-    	locationDTO.setLocation_id(Integer.parseInt(id));
-    	locationDTO = locationDAO.getDetail(locationDTO);
+    	LocationDTO locationDTO = (LocationDTO)request.getAttribute("dto");
     %>
 <!DOCTYPE html>
 <html>

@@ -5,8 +5,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-LocationDAO dao = new LocationDAO();
-List<LocationDTO> list = dao.getList();
+	List<LocationDTO> list = (List<LocationDTO>)request.getAttribute("list");
+
 %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +33,7 @@ List<LocationDTO> list = dao.getList();
 			<% for(int i=0;i<list.size();i++){%>
 			<tr>
 				<td><a
-					href="locationDetail.jsp?location_id=<%= list.get(i).getLocation_id()%>">
+					href="locationDetail.do?location_id=<%= list.get(i).getLocation_id()%>">
 						<%= list.get(i).getLocation_id()%></a></td>
 						<td>
 							<%= list.get(i).getStreet_address()%></td>
@@ -42,7 +42,7 @@ List<LocationDTO> list = dao.getList();
 		</tbody>
 		<tfoot>
 			<tr>
-				<td><a href="./locationAdd.jsp">지역등록</a></td>
+				<td><a href="locationAdd.do">지역등록</a></td>
 			</tr>
 		</tfoot>
 	</table>

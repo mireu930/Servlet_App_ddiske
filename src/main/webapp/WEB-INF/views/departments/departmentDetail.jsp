@@ -42,8 +42,8 @@ td a {
 				<td><%=departmentDTO.getDepartment_id()%></td>
 				<td><%=departmentDTO.getDepartment_name()%></td>
 				<td><%=departmentDTO.getManager_id()%></td>												
-				<td><a href ="./departmentDeleteProcess.jsp?department_id=<%= departmentDTO.getDepartment_id()%>">삭제</a></td>
-				<td><a href = "./departmentUpdateProcess.jsp?department_id=<%= departmentDTO.getDepartment_id()%>">수정</a></td>
+				<td><a href ="./departments/departmentDeleteProcess.do?department_id=<%= departmentDTO.getDepartment_id()%>">삭제</a></td>
+				<td><a href = "./departments/departmentUpdateProcess.do?department_id=<%= departmentDTO.getDepartment_id()%>">수정</a></td>
 				<%} else {%>
 				없는부서입니다.
 				<%}%>

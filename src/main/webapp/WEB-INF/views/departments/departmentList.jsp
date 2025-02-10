@@ -41,7 +41,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td><a href="departmentAdd.jsp">부서등록</a></td>
+				<td><a href="departmentAdd.do">부서등록</a></td>
 			</tr>
 		</tfoot>
 	</table>
