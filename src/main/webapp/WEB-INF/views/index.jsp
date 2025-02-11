@@ -13,7 +13,8 @@
   <section class = "wrap_left content">
 	<%@ include file = "/WEB-INF/views/template/nav.jsp" %>
     <nav class = " right content_right">
-
+		<h4>${1+1}</h4>
+		
     </nav>
   </section>
   <%@ include file = "/WEB-INF/views/template/footer.jsp" %>

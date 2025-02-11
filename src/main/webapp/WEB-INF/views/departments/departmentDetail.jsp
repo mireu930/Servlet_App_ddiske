@@ -2,9 +2,7 @@
 <%@page import="com.root.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	DepartmentDTO departmentDTO = (DepartmentDTO)request.getAttribute("dto");
-%>
+	
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,7 +25,7 @@ td a {
 	<div>
 	</div>
 	<table>
-	<%if (departmentDTO != null) {%>
+	
 		<thead>
 			<tr>
 				<th>부서번호</th>
@@ -39,14 +37,12 @@ td a {
 		</thead>
 		<tbody>
 			<tr>
-				<td><%=departmentDTO.getDepartment_id()%></td>
-				<td><%=departmentDTO.getDepartment_name()%></td>
-				<td><%=departmentDTO.getManager_id()%></td>												
-				<td><a href ="./departments/departmentDeleteProcess.do?department_id=<%= departmentDTO.getDepartment_id()%>">삭제</a></td>
-				<td><a href = "./departments/departmentUpdateProcess.do?department_id=<%= departmentDTO.getDepartment_id()%>">수정</a></td>
-				<%} else {%>
-				없는부서입니다.
-				<%}%>
+				<td>${dto.department_id}</td>
+				<td>${dto.department_name}</td>
+				<td>${dto.manager_id}</td>												
+				<td><a href ="./departments/departmentDeleteProcess.do?department_id=${requestScope.dto.department_id}">삭제</a></td>
+				<td><a href = "./departments/departmentUpdateProcess.do?department_id=${requestScope.dto.department_id}">수정</a></td>
+				
 		</tbody>
 	</table>
 </body>
