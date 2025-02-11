@@ -6,6 +6,8 @@ import java.sql.ResultSet;
 
 import com.root.app.utils.DBConnection;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 public class EmployeeDAO {
 	
 	public EmployeeDTO getDetail(EmployeeDTO employeeDTO) throws Exception {
@@ -35,18 +37,16 @@ public class EmployeeDAO {
 				+ "	VALUES(EMPLOYEES_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
-		statement.setInt(1, employeeDTO.getEmployee_id());
-		statement.setString(2, employeeDTO.getFirtst_name());
-		statement.setString(3, employeeDTO.getLast_name());
-		statement.setString(4, employeeDTO.getEmail());
-		statement.setString(5, employeeDTO.getPhone_number());
-		statement.setDate(6, employeeDTO.getHire_date());
-		statement.setString(7, employeeDTO.getJob_id());
-		statement.setDouble(8, employeeDTO.getSalary());
-		statement.setDouble(9, employeeDTO.getCommision());
-		statement.setInt(10, employeeDTO.getManager_id());
-		statement.setInt(11, employeeDTO.getDepartment_id());
-		statement.setString(12, employeeDTO.getPassword());
+		statement.setString(1, employeeDTO.getFirtst_name());
+		statement.setString(2, employeeDTO.getLast_name());
+		statement.setString(3, employeeDTO.getEmail());
+		statement.setString(4, employeeDTO.getPhone_number());
+		statement.setString(5, employeeDTO.getJob_id());
+		statement.setDouble(6, employeeDTO.getSalary());
+		statement.setDouble(7, employeeDTO.getCommision());
+		statement.setInt(8, employeeDTO.getManager_id());
+		statement.setInt(9, employeeDTO.getDepartment_id());
+		statement.setString(10, employeeDTO.getPassword());
 		
 		int result = statement.executeUpdate();
 		
@@ -68,8 +68,29 @@ public class EmployeeDAO {
 		return result;
 	}
 	
-	public void update() {
+	public int update(EmployeeDTO employeeDTO) throws Exception {
+		Connection connection = DBConnection.getConnection();
+		String sql = "UPDATE EMPLOYEES SET FIRST_NAME = ?, LAST_NAME = ?,EMAIL=?, "
+				+ "PHONE_NUMBER=?, JOB_ID=?,SALARY=?,COMMISSION_PCT=?, MANAGER_ID=?,DEPARTMENT_ID=?, "
+				+ "PASSWORD=? WHERE EMPLOYEE_ID = ?;";
+		PreparedStatement statement = connection.prepareStatement(sql);
 		
+		statement.setString(1, employeeDTO.getFirtst_name());
+		statement.setString(2, employeeDTO.getLast_name());
+		statement.setString(3, employeeDTO.getEmail());
+		statement.setString(4, employeeDTO.getPhone_number());
+		statement.setDate(5, employeeDTO.getHire_date());
+		statement.setString(6, employeeDTO.getJob_id());
+		statement.setDouble(7, employeeDTO.getSalary());
+		statement.setDouble(8, employeeDTO.getCommision());
+		statement.setInt(9, employeeDTO.getManager_id());
+		statement.setInt(10, employeeDTO.getDepartment_id());
+		statement.setString(11, employeeDTO.getPassword());
+		statement.setInt(12, employeeDTO.getEmployee_id());
+		
+		int result = statement.executeUpdate();
+		
+		return result;
 	}
 	
 }
