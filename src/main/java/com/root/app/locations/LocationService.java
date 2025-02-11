@@ -84,7 +84,7 @@ public class LocationService {
     	locationDTO.setPostal_code(code);
     	locationDTO.setCity(city);
     
-    	int result = locationDAO.add(locationDTO);
+    	int result = locationDAO.update(locationDTO);
     	
     	String message = "실패";
     	

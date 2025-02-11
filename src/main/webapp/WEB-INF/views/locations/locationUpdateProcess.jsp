@@ -8,7 +8,7 @@
     	LocationDAO locationDAO = new LocationDAO();
     	
     	String id = request.getParameter("location_id");
-    	String address = request.getParameter("streeat_address");
+    	String address = request.getParameter("street_address");
     	String code = request.getParameter("postal_code");
     	
     	locationDTO.setLocation_id(Integer.parseInt(id));
