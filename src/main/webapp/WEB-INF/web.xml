@@ -40,6 +40,15 @@
   	</servlet-class>
   </servlet>
   
+  <servlet>
+  	<servlet-name>
+  		employeeController
+  	</servlet-name>
+  	<servlet-class>
+  		com.root.app.employees.EmployeeController
+  	</servlet-class>
+  </servlet>
+  
   <!-- 어떤 요청이 왔을 때 누구를 실행 -->
   <servlet-mapping>
   	<servlet-name>homeController</servlet-name>
@@ -54,6 +63,11 @@
   <servlet-mapping>
   	<servlet-name>locationController</servlet-name>
   	<url-pattern>/locations/*</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>employeeController</servlet-name>
+  	<url-pattern>/employees/*</url-pattern>
   </servlet-mapping>
   
 </web-app>

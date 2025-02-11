@@ -26,9 +26,9 @@
 					<tbody>
 						<c:forEach items="${list}" var="dto">
 							<tr>
-								<td>${dto.location_id }</td>
-								<td><a href="./detail.do?location_id=${dto.location_id }%>">
-										${dto.city }</a></td>
+								<td>${pageScope.dto.location_id }</td>
+								<td><a href="./detail.do?location_id=${pageScope.dto.location_id }%>">
+										${pageScope.dto.city }</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>

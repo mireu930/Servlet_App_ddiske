@@ -17,13 +17,13 @@
 			<h1>Location Detail Page</h1>
 			<c:choose>
 				<c:when test="${not empty dto }">
-					<h3>${dto.location_id }</h3>
-					<h3>${dto.city }</h3>
-					<h3>${dto.street_address }</h3>
-					<h3>${dto.postal_code }</h3>
+					<h3>${requestScope.dto.location_id }</h3>
+					<h3>${requestScope.dto.city }</h3>
+					<h3>${requestScope.dto.street_address }</h3>
+					<h3>${requestScope.dto.postal_code }</h3>
 
-					<a href="./update.do?location_id=${dto.location_id }">수정하기</a>
-					<a href="./delete.do?location_id=${dto.location_id }">삭제</a>
+					<a href="./update.do?location_id=${requestScope.dto.location_id }">수정하기</a>
+					<a href="./delete.do?location_id=${requestScope.dto.location_id }">삭제</a>
 				</c:when>
 				<c:when test="${empty dto }">
 					<h3>없는 지역</h3>

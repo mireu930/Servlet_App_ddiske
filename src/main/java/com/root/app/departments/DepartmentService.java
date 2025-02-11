@@ -50,6 +50,7 @@ public class DepartmentService {
 			str = "부서 등록 완료";
 		}
 		request.setAttribute("result", str);
+		request.setAttribute("path", "./list.do");
 		actionForward.setFlag(true);
 		actionForward.setPath("/WEB-INF/views/commons/result.jsp");
 	}
@@ -79,6 +80,7 @@ public class DepartmentService {
 			str = "수정 완료";
 		}
 		request.setAttribute("result", str);
+		request.setAttribute("path", "./list.do");
 		actionForward.setFlag(true);
 		actionForward.setPath("/WEB-INF/views/commons/result.jsp");
 	}
@@ -93,6 +95,7 @@ public class DepartmentService {
 			str = "삭제 완료";
 		}
 		request.setAttribute("result", str);
+		request.setAttribute("path", "./list.do");
 		actionForward.setFlag(true);
 		actionForward.setPath("/WEB-INF/views/commons/result.jsp");
 	}

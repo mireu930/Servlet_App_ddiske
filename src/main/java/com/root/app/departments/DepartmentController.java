@@ -116,7 +116,6 @@ public class DepartmentController extends HttpServlet {
 		url = url.substring(url.lastIndexOf("/")+1);
 		
 		
-		String path = "";
 		
 		ActionForward actionForward = new ActionForward();
 		actionForward.setFlag(true);
@@ -168,8 +167,13 @@ public class DepartmentController extends HttpServlet {
 				e.printStackTrace();	
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
-		view.forward(request, response);
+		if(actionForward.isFlag()) {
+			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+			view.forward(request, response);			
+		}else {
+			// redirect
+			response.sendRedirect(actionForward.getPath());
+		}
 		
 //		try {
 //		DepartmentDAO departmentDAO = new DepartmentDAO();
