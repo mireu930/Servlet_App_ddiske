@@ -1,26 +1,18 @@
-<%@page import="java.util.ArrayList"%>
-<%@page import="com.root.app.locations.LocationDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.root.app.locations.LocationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	List<LocationDTO> list = (List<LocationDTO>)request.getAttribute("list");
-
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="/resources/css/style.css">
-<link rel="stylesheet" href="/resources/css/reset.css">
+<c:import url="/WEB-INF/views/template/common.jsp"></c:import>
 <link rel="stylesheet" href="/resources/css/list.css">
 </head>
 <body>
-	<%@ include file="../template/header.jsp" %>
-  <section class = "wrap_left content">
-    <%@ include file = "../template/nav.jsp" %>
+	<c:import url="../template/header.jsp"></c:import>
+  	<section class = "wrap_left content">
+  	<c:import url="../template/nav.jsp"></c:import>
     <nav class = " right content_right">
 		<table>
 		<thead>
@@ -30,15 +22,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% for(int i=0;i<list.size();i++){%>
+			<c:forEach items="${list}" var="list">				
 			<tr>
 				<td><a
-					href="locationDetail.do?location_id=<%= list.get(i).getLocation_id()%>">
-						<%= list.get(i).getLocation_id()%></a></td>
+					href="locationDetail.do?location_id=${list.location_id}">
+						${list.location_id}</a></td>
 						<td>
-							<%= list.get(i).getStreet_address()%></td>
+							${list.street_address}</td>
 			</tr>
-			<%}%>
+			</c:forEach>
 		</tbody>
 		<tfoot>
 			<tr>
@@ -48,6 +40,6 @@
 	</table>
 	 </nav>
   </section>
-	 <%@ include file = "../template/footer.jsp" %>
+  	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

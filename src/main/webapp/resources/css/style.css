@@ -34,6 +34,8 @@ header {
 .menu {
   display: flex;
   justify-content: space-between;
+  color: black;
+  background-color:red;
 }
 
 .menu ul {

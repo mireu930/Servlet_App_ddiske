@@ -76,7 +76,7 @@ public class LocationService {
 	public void updateProcess(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
 		LocationDTO locationDTO = new LocationDTO();
 		
-		String address = request.getParameter("streeat_address");
+		String address = request.getParameter("street_address");
     	String code = request.getParameter("postal_code");
     	String city = request.getParameter("city");
     	

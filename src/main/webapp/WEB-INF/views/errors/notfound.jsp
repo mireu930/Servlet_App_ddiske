@@ -52,7 +52,7 @@ tbody tr {
 
 </head>
 <body>
-	<%@ include file=../template/header.jsp"%>
+	<%@ include file="../template/header.jsp"%>
 	<section class="wrap_left content">
 		<%@ include file="../template/nav.jsp"%>
 		<nav class=" right content_right">
@@ -69,7 +69,7 @@ tbody tr {
 					%>
 					<tr>
 						<td><a
-							href="departmentDetail.jsp?department_id=<%=ar.get(i).getDepartment_id()%>"><%=ar.get(i).getDepartment_id()%></a></td>
+							href="departmentDetail.do?department_id=<%=ar.get(i).getDepartment_id()%>"><%=ar.get(i).getDepartment_id()%></a></td>
 						<td><%=ar.get(i).getDepartment_name()%></td>
 					</tr>
 					<%

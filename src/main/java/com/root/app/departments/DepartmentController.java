@@ -72,7 +72,7 @@ public class DepartmentController extends HttpServlet {
 				departmentService.getDetail(request, actionFoward);
 			} else if(result.equals("departmentAdd.do")) {
 				String method = request.getMethod();
-				if(method.toUpperCase().equals("post")) {
+				if(method.toUpperCase().equals("POST")) {
 					departmentService.add(request, actionFoward);
 					
 				} else {
@@ -81,7 +81,7 @@ public class DepartmentController extends HttpServlet {
 				}
 			} else if(result.equals("departmentUpdateProcess.do")) {
 				String method = request.getMethod();
-				if(method.toUpperCase().equals("post")) {
+				if(method.toUpperCase().equals("POST")) {
 					departmentService.updateProcess(request, actionFoward);
 					
 				} else {
@@ -96,8 +96,12 @@ public class DepartmentController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		if(actionFoward.isFlag()) {
 		RequestDispatcher view = request.getRequestDispatcher(actionFoward.getPath());
 		view.forward(request, response);
+		} else {
+			response.sendRedirect(actionFoward.getPath());
+		}
 			
 	}
 	

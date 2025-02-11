@@ -1,13 +1,9 @@
-<%@page import="com.root.app.departments.DepartmentDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.root.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<% 
-	//스크립툴릿 자바코드안에 사용하는 
-	Object ar = request.getAttribute("list");
-	List<DepartmentDTO> list = (List) ar;
-%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,15 +26,24 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% for(int i=0;i<list.size();i++){%>
-			<tr>
-				<td><%= list.get(i).getDepartment_id()%></td>
-				<td><a
-					href="departmentDetail.do?department_id=<%= list.get(i).getDepartment_id()%>">
-						<%= list.get(i).getDepartment_name()%></a></td>
-			</tr>
-			<%}%>
-		</tbody>
+					<c:forEach items="${list}" var="list" varStatus="st">
+						<tr>
+							<%-- <td>
+							<h4>현재아이템:${st.current}</h4>
+							<h4>현재아이템:${st.index}</h4>
+							<h4>현재아이템:${st.count}</h4>
+							<h4>현재아이템:${st.first}</h4>
+							<h4>현재아이템:${st.last}</h4>
+							
+							</td> --%>
+							<td>${pageScope.list.department_id}</td>
+							<td><a
+								href="departmentDetail.do?department_id=${pageScope.list.department_id}">
+									${list.department_name}</a></td>
+						</tr>
+					</c:forEach>
+
+				</tbody>
 		<tfoot>
 			<tr>
 				<td><a href="departmentAdd.do">부서등록</a></td>

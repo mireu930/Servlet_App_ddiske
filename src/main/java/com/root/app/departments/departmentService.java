@@ -49,6 +49,7 @@ public class departmentService {
 			message = "등록성공";
 		}
 		request.setAttribute("result", message);
+		request.setAttribute("path", "./departmentList.do");
 		actionFoward.setFlag(true);
 		actionFoward.setPath("/WEB-INF/views/commons/result.jsp");
 	}
@@ -84,8 +85,9 @@ public class departmentService {
 			message = "등록수정성공";
 		}
 		request.setAttribute("result", message);
+		request.setAttribute("path", "./departmentList.do");
 		actionFoward.setFlag(true);
-		actionFoward.setPath("/WEB-INF/views/commons/result.jsp");
+		actionFoward.setPath("/WEB-INF/views/common/result.jsp");
 	}
 	
 	public void delete(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
@@ -100,6 +102,7 @@ public class departmentService {
 		}
 		
 		request.setAttribute("result", message);
+		request.setAttribute("path", "./departmentList.do");
 		actionFoward.setFlag(true);
 		actionFoward.setPath("/WEB-INF/views/commons/result.jsp");
 	}

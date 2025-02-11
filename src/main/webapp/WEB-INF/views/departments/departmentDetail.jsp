@@ -1,8 +1,8 @@
-<%@page import="com.root.app.departments.DepartmentDTO"%>
-<%@page import="com.root.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<link rel = "stylesheet" href ="/resources/css/list.css">
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +25,15 @@ td a {
 	<div>
 	</div>
 	<table>
-	
+	 <%-- <c:if test="${not empty requestScope.dto}"> --%>
+	 <c:choose>
+	 	<c:when test="${not empty dto}">
+	 	
+	 	</c:when>
+	 	<c:otherwise>
+	 	
+	 	</c:otherwise>
+	 </c:choose>
 		<thead>
 			<tr>
 				<th>부서번호</th>
@@ -44,6 +52,10 @@ td a {
 				<td><a href = "./departments/departmentUpdateProcess.do?department_id=${requestScope.dto.department_id}">수정</a></td>
 				
 		</tbody>
+		<%-- </c:if> --%>
+		<%-- <c:if test="${empty dto}">
+			<h3>부서정보가없다</h3>
+		</c:if> --%>
 	</table>
 </body>
 </html>

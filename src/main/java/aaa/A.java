@@ -36,6 +36,9 @@ public class A extends HttpServlet {
 		RequestDispatcher view  = request.getRequestDispatcher("WEB-INF/views/index.jsp");
 		//jsp 포워딩(jsp로 보내는)
 		view.forward(request, response);
+		
+		HomeService homeService = new HomeService();
+		homeService.date(request);
 	}
 
 	/**

@@ -3,16 +3,16 @@
 <%@page import="com.root.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-DepartmentDAO dao = new DepartmentDAO();
-List<DepartmentDTO> ar = dao.getList();
+<%@
+ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"
 %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@ include file="../template/common.jsp"%>
+
+<c:import url="../template/common.jsp"></c:import>
 <style>
 table {
 	margin: 0 auto;
@@ -52,9 +52,9 @@ tbody tr {
 
 </head>
 <body>
-	<%@ include file=../template/header.jsp"%>
+	<c:import url="../template/header.jsp"></c:import>
 	<section class="wrap_left content">
-		<%@ include file="../template/nav.jsp"%>
+		<c:import url="../template/nav.jsp"></c:import>
 		<nav class=" right content_right">
 			<table>
 				<thead>
@@ -64,21 +64,20 @@ tbody tr {
 					</tr>
 				</thead>
 				<tbody>
-					<%
-					for (int i = 0; i < ar.size(); i++) {
-					%>
+				<c:forEach items="${list}" var="ar">
 					<tr>
 						<td><a
-							href="departmentDetail.jsp?department_id=<%=ar.get(i).getDepartment_id()%>"><%=ar.get(i).getDepartment_id()%></a></td>
-						<td><%=ar.get(i).getDepartment_name()%></td>
+							href="departmentDetail.jsp?department_id=${ar.department_id }">${ar.deparment_id}</a></td>
+						<td>${ar.department_name}</td>
+						
 					</tr>
-					<%
-					}
-					%>
+				</c:forEach>
+					
+
 				</tbody>
 			</table>
 		</nav>
 	</section>
-	<%@ include file="../template/footer.jsp"%>
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>

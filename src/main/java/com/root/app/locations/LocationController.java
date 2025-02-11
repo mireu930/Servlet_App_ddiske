@@ -51,7 +51,7 @@ public class LocationController extends HttpServlet {
 				
 			} else if(uri.equals("locationAdd.do")) {
 				String method = request.getMethod();
-				if(method.toUpperCase().equals("post")) {
+				if(method.toUpperCase().equals("POST")) {
 					locationService.add(request, actionFoward);					
 				}else {
 					actionFoward.setFlag(true);
@@ -59,7 +59,7 @@ public class LocationController extends HttpServlet {
 				}
 			} else if(uri.equals("locationUpdate.do")) {
 				String method = request.getMethod();
-				if(method.toUpperCase().equals("post")) {
+				if(method.toUpperCase().equals("POST")) {
 					locationService.updateProcess(request, actionFoward);					
 				}else {
 					locationService.update(request, actionFoward);

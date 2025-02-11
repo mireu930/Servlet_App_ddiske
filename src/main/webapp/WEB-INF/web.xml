@@ -35,4 +35,14 @@
   	<servlet-name>locationController</servlet-name>
   	<url-pattern>/locations/*</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>employeeController</servlet-name>
+  	<servlet-class>com.root.app.employee.EmployeeController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>employeeController</servlet-name>
+  	<url-pattern>/employee/*</url-pattern>
+  </servlet-mapping>
 </web-app>

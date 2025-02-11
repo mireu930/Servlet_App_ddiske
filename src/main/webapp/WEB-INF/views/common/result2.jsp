@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     <%
     	String str = (String)request.getAttribute("result");
+    	if(str==null){
+    		str = "값이없습니다.";
+    	}
     %>
 <!DOCTYPE html>
 <html>
