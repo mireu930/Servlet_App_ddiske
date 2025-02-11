@@ -1,25 +1,18 @@
-<%@page import="com.root.app.locations.LocationDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.root.app.locations.LocationDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%
-List<LocationDTO> ar = (List<LocationDTO>) request.getAttribute("list");
-%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../template/common.jsp"%>
+<c:import url="../template/common.jsp"></c:import>
 <link rel="stylesheet" href="/resources/css/list.css">
 </head>
 <body>
-	<%@include file="/WEB-INF/views/template/header.jsp"%>
-
+	<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
 	<section class="contents wrap_left">
-		<%@include file="/WEB-INF/views/template/nav.jsp"%>
+		<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 		<div class="contents_right right">
 			<!-- contents 내용 기술 -->
 			<div class="contents_right_list">
@@ -31,25 +24,19 @@ List<LocationDTO> ar = (List<LocationDTO>) request.getAttribute("list");
 						</tr>
 					</thead>
 					<tbody>
-						<%
-						for (int i = 0; i < ar.size(); i++) {
-						%>
-						<tr>
-							<td><%=ar.get(i).getLocation_id()%></td>
-							<td><a
-								href="./detail.do?location_id=<%=ar.get(i).getLocation_id()%>">
-									<%=ar.get(i).getCity()%></a></td>
-						</tr>
-						<%
-						}
-						%>
+						<c:forEach items="${list}" var="dto">
+							<tr>
+								<td>${dto.location_id }</td>
+								<td><a href="./detail.do?location_id=${dto.location_id }%>">
+										${dto.city }</a></td>
+							</tr>
+						</c:forEach>
 					</tbody>
 				</table>
 			</div>
 			<a href="./add.do">추가</a>
 		</div>
 	</section>
-
-	<%@include file="/WEB-INF/views/template/footer.jsp"%>
+	<c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 </body>
 </html>

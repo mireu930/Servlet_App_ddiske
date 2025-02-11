@@ -1,54 +1,47 @@
-<%@page import="com.root.app.departments.DepartmentDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="com.root.app.departments.DepartmentDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%
-// 스크립틀릿 자바코드 안에 사용하는
-// DepartmentDAO departmentDAO = new DepartmentDAO();
-// List<DepartmentDTO> ar = departmentDAO.getList();
-	Object list = request.getAttribute("list");
-	List<DepartmentDTO> ar = (List<DepartmentDTO>)list;
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="../template/common.jsp"%>
+<c:import url="../template/common.jsp"></c:import>
 <link rel="stylesheet" href="/resources/css/list.css">
 </head>
 <body>
-	<%@include file="../template/header.jsp"%>
+	<c:import url="../template/header.jsp"></c:import>
 	<section class="contents wrap_left">
-		<%@include file="../template/nav.jsp"%>
+		<c:import url="../template/nav.jsp"></c:import>
 		<div class="contents_right right">
-		<div class="contents_right_list">
-			<table class="table_sprite">
-				<thead>
-					<tr>
-						<th>부서번호</th>
-						<th>부서명</th>
-					</tr>
-				</thead>
-				<tbody>
-					<%
-					for (int i = 0; i < ar.size(); i++) {
-					%>
-					<tr>
-						<td><%=ar.get(i).getDepartment_id()%></td>
-						<td><a
-							href="./detail.do?department_id=<%=ar.get(i).getDepartment_id()%>">
-								<%=ar.get(i).getDepartment_name()%>
-						</a></td>
-					</tr>
-					<%
-					}
-					%>
-				</tbody>
+			<div class="contents_right_list">
+				<table class="table_sprite">
+					<thead>
+						<tr>
+							<th>부서번호</th>
+							<th>부서명</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${list}" var="dto" varStatus="st">
+							<tr>
+								<td>${pageScope.dto.department_id }
+									<h4>현재 아이템 : ${st.current }</h4>
+									<h4>인덱스 번호 : ${st.index }</h4>
+									<h4>순서 번호 : ${st.count }</h4>
+									<h4>첫번째인가? : ${st.first }</h4>
+									<h4>마지막인가? : ${st.last }</h4>
+								</td>
+								<td><a
+									href="./detail.do?department_id=${pageScope.dto.department_id }">
+										${pageScope.dto.department_name } </a></td>
+							</tr>
 
-			</table>
+						</c:forEach>
+					</tbody>
+
+				</table>
 			</div>
 
 			<div>
@@ -58,7 +51,7 @@
 		</div>
 
 	</section>
-	<%@include file="../template/footer.jsp"%>
-
+	
+	<c:import url="../template/footer.jsp"></c:import>
 </body>
 </html>
