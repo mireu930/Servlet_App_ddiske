@@ -21,7 +21,7 @@ public class EmployeeDAO {
 		ResultSet resultSet = statement.executeQuery();
 		
 		if(resultSet.next()) {
-			employeeDTO.setFirtst_name(resultSet.getString(1));
+			employeeDTO.setFirst_name(resultSet.getString(1));
 		} else {
 			employeeDTO = null;
 		}
@@ -37,7 +37,7 @@ public class EmployeeDAO {
 				+ "	VALUES(EMPLOYEES_SEQ.NEXTVAL,?,?,?,?,SYSDATE,?,?,?,?,?,?)";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
-		statement.setString(1, employeeDTO.getFirtst_name());
+		statement.setString(1, employeeDTO.getFirst_name());
 		statement.setString(2, employeeDTO.getLast_name());
 		statement.setString(3, employeeDTO.getEmail());
 		statement.setString(4, employeeDTO.getPhone_number());
@@ -75,7 +75,7 @@ public class EmployeeDAO {
 				+ "PASSWORD=? WHERE EMPLOYEE_ID = ?;";
 		PreparedStatement statement = connection.prepareStatement(sql);
 		
-		statement.setString(1, employeeDTO.getFirtst_name());
+		statement.setString(1, employeeDTO.getFirst_name());
 		statement.setString(2, employeeDTO.getLast_name());
 		statement.setString(3, employeeDTO.getEmail());
 		statement.setString(4, employeeDTO.getPhone_number());

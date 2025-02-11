@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class EmployeeDTO {
 	private int employee_id;
-	private String firtst_name;
+	private String first_name;
 	private String last_name;
 	private String email;
 	private String phone_number;
@@ -23,11 +23,11 @@ public class EmployeeDTO {
 	public void setEmployee_id(int employee_id) {
 		this.employee_id = employee_id;
 	}
-	public String getFirtst_name() {
-		return firtst_name;
+	public String getFirst_name() {
+		return first_name;
 	}
-	public void setFirtst_name(String firtst_name) {
-		this.firtst_name = firtst_name;
+	public void setFirst_name(String firtst_name) {
+		this.first_name = firtst_name;
 	}
 	public String getLast_name() {
 		return last_name;

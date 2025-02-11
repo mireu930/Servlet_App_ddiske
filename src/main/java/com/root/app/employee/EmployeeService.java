@@ -23,28 +23,30 @@ public class EmployeeService {
 	public void add(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		
-//		employeeDTO.setFirtst_name(request.getParameter("first_name"));
-//		employeeDTO.setLast_name(request.getParameter("last_name"));
-//		employeeDTO.setEmail(request.getParameter("email"));
-//		employeeDTO.setPhone_number(request.getParameter("phone_number"));
-////		employeeDTO.setHire_date(Date.from(request.getParameter("hire_date"));
-//		employeeDTO.setJob_id(request.getParameter("job_id"));
-//		employeeDTO.setSalary(request.getParameter("salary"));
-//		employeeDTO.setCommision(Double.parseDouble(request.getParameter("commision_pct")));
-//		employeeDTO.setManager_id(Integer.parseInt(request.getParameter("manager_id")));
-//		employeeDTO.setDepartment_id(Integer.parseInt(request.getParameter("department_id")));
-//		employeeDTO.setPassword(request.getParameter("password"));
+		employeeDTO.setFirst_name(request.getParameter("first_name"));
+		employeeDTO.setLast_name(request.getParameter("last_name"));
+		employeeDTO.setEmail(request.getParameter("email"));
+		employeeDTO.setPhone_number(request.getParameter("phone_number"));
+//		employeeDTO.setHire_date(Date.from(request.getParameter("hire_date"));
+		employeeDTO.setJob_id(request.getParameter("job_id"));
+		employeeDTO.setSalary(Double.parseDouble(request.getParameter("salary")));
+		employeeDTO.setCommision(Double.parseDouble(request.getParameter("commision_pct")));
+		employeeDTO.setManager_id(Integer.parseInt(request.getParameter("manager_id")));
+		employeeDTO.setDepartment_id(Integer.parseInt(request.getParameter("department_id")));
+		employeeDTO.setPassword(request.getParameter("password"));
 		
 		
 		int result = employeeDAO.add(employeeDTO);
 		
-//		String message = "실패";
-//		if(result > 0) {
-//			message="등록성공";
-//		}
-		
-		actionFoward.setFlag(false);
-		actionFoward.setPath("../index.do");
+		if(result > 0) {
+			actionFoward.setFlag(false);
+			actionFoward.setPath("../index.do");
+		} else {
+			request.setAttribute("result", "로그인실패");
+			request.setAttribute("path", "./join.do");
+			actionFoward.setFlag(true);
+			actionFoward.setPath("/WEB-INF/views/common/result.jsp");
+		}
 	}
 	
 	public void getDetail(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
@@ -87,13 +89,16 @@ public class EmployeeService {
 	public void update(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
 		EmployeeDTO employeeDTO = new EmployeeDTO();
 		
-		employeeDTO.setFirtst_name(request.getParameter("first_name"));
+		LocalDate localDate = LocalDate.parse(request.getParameter("hire_date"));
+		Date date = Date.valueOf(localDate);
+		
+		employeeDTO.setFirst_name(request.getParameter("first_name"));
 		employeeDTO.setLast_name(request.getParameter("last_name"));
 		employeeDTO.setEmail(request.getParameter("email"));
 		employeeDTO.setPhone_number(request.getParameter("phone_number"));
-		employeeDTO.setHire_date(LocalDate.parse(request.getParameter("hire_date")));
+		employeeDTO.setHire_date(date);
 		employeeDTO.setJob_id(request.getParameter("job_id"));
-		employeeDTO.setSalary(Integer.parseInt(request.getParameter("salary")));
+		employeeDTO.setSalary(Double.parseDouble(request.getParameter("salary")));
 		employeeDTO.setCommision(Double.parseDouble(request.getParameter("commision_pct")));
 		employeeDTO.setManager_id(Integer.parseInt(request.getParameter("manager_id")));
 		employeeDTO.setDepartment_id(Integer.parseInt(request.getParameter("department_id")));
