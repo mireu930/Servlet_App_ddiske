@@ -2,7 +2,10 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Servlet_App</display-name>
 
-  
+  <filter-mapping>
+  	<filter-name>encode</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
 <!--배포서술자-->
  <!-- Servlet 객체 생성 FQDN(풀퀄리티도메인네임)-->
   <servlet>
@@ -16,37 +19,5 @@
   	<url-pattern>/index.do</url-pattern>
   </servlet-mapping>
   
-  <servlet>
-  	<servlet-name>departmentContoller</servlet-name>
-  	<servlet-class>com.root.app.departments.DepartmentController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>departmentContoller</servlet-name>
-  	<url-pattern>/departments/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>locationController</servlet-name>
-  	<servlet-class>com.root.app.locations.LocationController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>locationController</servlet-name>
-  	<url-pattern>/locations/*</url-pattern>
-  </servlet-mapping>
-  
-  <servlet>
-  	<servlet-name>employeeController</servlet-name>
-  	<servlet-class>com.root.app.employee.EmployeeController</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>employeeController</servlet-name>
-  	<url-pattern>/employee/*</url-pattern>
-  </servlet-mapping>
-  
-  <session-config>
-  	<session-timeout>10</session-timeout>
-  </session-config>
+
 </web-app>

@@ -34,23 +34,7 @@ public class A extends HttpServlet {
 		System.out.println("Home Controller");
 		
 		//cookie
-		Cookie cookie = new Cookie("my", "test");
-		cookie.setMaxAge(60);
-//		cookie.getMaxAge();
 		
-		
-		response.addCookie(cookie);
-		
-		String value = cookie.getValue();
-		
-		//jsp연결
-		//path jsp 경로, 절대경로
-		RequestDispatcher view  = request.getRequestDispatcher("WEB-INF/views/index.jsp");
-		//jsp 포워딩(jsp로 보내는)
-		view.forward(request, response);
-		
-		HomeService homeService = new HomeService();
-		homeService.date(request);
 	}
 
 	/**
