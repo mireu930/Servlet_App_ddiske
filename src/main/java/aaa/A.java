@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,17 @@ public class A extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("Home Controller");
+		
+		//cookie
+		Cookie cookie = new Cookie("my", "test");
+		cookie.setMaxAge(60);
+//		cookie.getMaxAge();
+		
+		
+		response.addCookie(cookie);
+		
+		String value = cookie.getValue();
+		
 		//jsp연결
 		//path jsp 경로, 절대경로
 		RequestDispatcher view  = request.getRequestDispatcher("WEB-INF/views/index.jsp");

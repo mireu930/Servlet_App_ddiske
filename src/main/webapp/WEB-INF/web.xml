@@ -45,4 +45,8 @@
   	<servlet-name>employeeController</servlet-name>
   	<url-pattern>/employee/*</url-pattern>
   </servlet-mapping>
+  
+  <session-config>
+  	<session-timeout>10</session-timeout>
+  </session-config>
 </web-app>

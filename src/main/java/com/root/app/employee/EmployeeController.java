@@ -5,9 +5,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.root.app.ActionFoward;
 
@@ -55,12 +57,50 @@ public class EmployeeController extends HttpServlet {
 
 			} else if (result.equals("login.do")) {
 				String method = request.getMethod();
+				
+				//쿠키 꺼내기
+				Cookie[] cookies = request.getCookies();
+				
+				for(Cookie cookie: cookies) {
+					System.out.println(cookie.getName());
+					System.out.println(cookie.getValue());
+				}
+				
+				
 				if (method.toUpperCase().equals("POST")) {
 					employeeService.getDetail(request, actionFoward);
 				} else {
 					actionFoward.setFlag(true);
 					actionFoward.setPath("/WEB-INF/views/employee/login.jsp");
 				}
+			} else if(result.equals("logout.do")) {
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("user", null);
+				//session.removeAttribute("user");
+				//session.removeValue("user");
+				session.invalidate();
+				
+				actionFoward.setFlag(false);
+				actionFoward.setPath("../index.do");
+			} else if(result.equals("mypage.do")) {
+				employeeService.getList(request, actionFoward);
+				
+				actionFoward.setFlag(true);
+				actionFoward.setPath("/WEB-INF/views/employee/mypage.jsp");
+			} else if (result.equals("update.do")) {
+				String method = request.getMethod();
+				
+				if(method.toUpperCase().equals("POST")) {
+					employeeService.update(request, actionFoward);
+				} else {
+					employeeService.getList(request, actionFoward);
+					
+					actionFoward.setFlag(true);
+					actionFoward.setPath("/WEB-INF/views/employee/update.jsp");	
+				}
+				
+				
 			}
 
 		} catch (Exception e) {

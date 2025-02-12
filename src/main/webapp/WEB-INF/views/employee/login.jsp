@@ -17,6 +17,10 @@
       <legend>비밀번호</legend>
       <input type = "password" name = "password">
     </fieldset>
+     <fieldset>
+    	<label>ID 기억하기</label>
+    	<input type = "checkbox" name = "">
+    	</fieldset>
       <fieldset>
         <input type = "submit" value ="로그인">
       </fieldset>
