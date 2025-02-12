@@ -62,5 +62,28 @@ public class EmployeeService {
 		}
 		
 	}
+	
+	public void getDetail(HttpServletRequest request, ActionForward actionForward) throws Exception {
+//		HttpSession session = request.getSession();
+//		EmployeeDTO employeeDTO = (EmployeeDTO)session.getAttribute("user");
+//		employeeDTO = employeeDAO.getDetail(employeeDTO);
+//		request.setAttribute("user", employeeDTO);
+		EmployeeDTO employeeDTO = (EmployeeDTO)request.getSession().getAttribute("user");
+		EmployeeDTO result = employeeDAO.getDetail(employeeDTO);
+		request.setAttribute("user", result);
+	}
+	
+	public void update(HttpServletRequest request, ActionForward actionForward) throws Exception {
+		HttpSession session = request.getSession();
+		EmployeeDTO employeeDTO = (EmployeeDTO)session.getAttribute("user");
+		employeeDTO.setFirst_name(request.getParameter("first_name"));
+		employeeDTO.setLast_name(request.getParameter("last_name"));
+		employeeDAO.update(employeeDTO);
+		
+		
+		session.setAttribute("user", employeeDTO);
+		actionForward.setFlag(false);
+		actionForward.setPath("./mypage.do");
+	}
 
 }

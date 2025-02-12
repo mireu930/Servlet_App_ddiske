@@ -12,6 +12,7 @@ public class EmployeeDAO {
 		Connection connection = DBConnection.getConnection();
 		String sql = "SELECT * FROM EMPLOYEES WHERE EMPLOYEE_ID = ?";
 		PreparedStatement st = connection.prepareStatement(sql);
+		st.setInt(1, employeeDTO.getEmployee_id());
 		ResultSet rs = st.executeQuery();
 		
 		if(rs.next()) {
@@ -80,6 +81,22 @@ public class EmployeeDAO {
 		
 		return employeeDTO;
 		
+	}
+	
+	public int update(EmployeeDTO employeeDTO) throws Exception {
+		Connection connection = DBConnection.getConnection();
+		String sql = "UPDATE EMPLOYEES SET FIRST_NAME = ?, LAST_NAME = ?"
+				+ " WHERE EMPLOYEE_ID = ?";
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setString(1, employeeDTO.getFirst_name());
+		st.setString(2, employeeDTO.getLast_name());
+		st.setInt(3, employeeDTO.getEmployee_id());
+		
+		int result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
+		
+		return result;
 	}
 
 }

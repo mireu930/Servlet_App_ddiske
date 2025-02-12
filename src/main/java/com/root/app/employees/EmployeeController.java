@@ -81,6 +81,22 @@ public class EmployeeController extends HttpServlet {
 				
 				actionForward.setFlag(false);
 				actionForward.setPath("../index.do");
+				break;
+			case "mypage.do" :
+				employeeService.getDetail(request, actionForward);
+				actionForward.setFlag(true);
+				actionForward.setPath("/WEB-INF/views/employees/mypage.jsp");
+				break;
+			case "update.do" :
+				method = request.getMethod();
+				if(method.equalsIgnoreCase("post")) {
+					employeeService.update(request, actionForward);
+				}else {
+					employeeService.getDetail(request, actionForward);
+					actionForward.setFlag(true);
+					actionForward.setPath("/WEB-INF/views/employees/update.jsp");					
+				}
+				break;
 			}
 			
 		} catch (Exception e) {
