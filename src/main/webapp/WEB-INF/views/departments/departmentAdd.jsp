@@ -17,11 +17,11 @@
 	<h3>부서추가</h3>
 	<form action = "./departmentAdd.do" method ="post">
 		<fieldset>
-      <legend>부서번호</legend>
+      <legend>부서이름</legend>
         <input type = "text" name = "department_name">
     </fieldset>
     <fieldset>
-      <legend>부서명</legend>
+      <legend>매니저id</legend>
       <input type = "text" name = "manager_id">
     </fieldset>
       <fieldset>
