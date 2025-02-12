@@ -22,12 +22,13 @@ public class AccountService {
 		accountDTO.setUserName((String)session.getAttribute("user"));
 		int result = accountDAO.add(accountDTO);
 		String str = "가입 실패";
+		request.setAttribute("path", "../products/detail.do");
 		
 		if(result > 0) {
 			str = "가입 완료";
+			request.setAttribute("path", "../products/list.do");
 		}
 		request.setAttribute("result", str);
-		request.setAttribute("path", "../products/list.do");
 		actionForward.setFlag(false);
 		actionForward.setPath("/WEB-INF/views/commons/result.jsp");
 		

@@ -40,20 +40,16 @@ public class ProductController extends HttpServlet {
 			switch (uri) {
 			case "list.do":
 				productService.getList(request, actionForward);
-				actionForward.setFlag(true);
-				actionForward.setPath("/WEB-INF/views/products/list.jsp");
+				
 				break;
 			case "detail.do" :
 				productService.getDetail(request, actionForward);
-				actionForward.setFlag(true);
-				actionForward.setPath("/WEB-INF/views/products/detail.jsp");
+				
 				break;
 			case "add.do" :
 				String method = request.getMethod();
 				if(method.equalsIgnoreCase("post")){
 					productService.add(request, actionForward);
-					actionForward.setFlag(false);
-					actionForward.setPath("./list.do");
 				}else {
 					actionForward.setFlag(true);
 					actionForward.setPath("/WEB-INF/views/products/add.jsp");
@@ -63,9 +59,6 @@ public class ProductController extends HttpServlet {
 				method = request.getMethod();
 				if(method.equalsIgnoreCase("post")) {
 					productService.update(request, actionForward);
-					productService.getDetail(request, actionForward);
-					actionForward.setFlag(false);
-					actionForward.setPath("./detail.do");
 				}else {
 					actionForward.setFlag(true);
 					actionForward.setPath("/WEB-INF/views/products/list.jsp");

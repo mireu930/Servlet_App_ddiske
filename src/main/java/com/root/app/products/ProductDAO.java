@@ -69,10 +69,11 @@ public class ProductDAO {
 	
 	public int update(ProductDTO productDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "UPDATE PRODUCTS SET PRODUCTRATE = ?, PRODUCTDETAIL = ?";
+		String sql = "UPDATE PRODUCTS SET PRODUCTRATE = ?, PRODUCTDETAIL = ? WHERE PRODUCTNUM = ?";
 		PreparedStatement st = connection.prepareStatement(sql);
 		st.setDouble(1, productDTO.getProductRate());
 		st.setString(2, productDTO.getProductDetail());
+		st.setLong(3, productDTO.getProductNum());
 		int result = st.executeUpdate();
 		
 		DBConnection.disConnect(st, connection);
