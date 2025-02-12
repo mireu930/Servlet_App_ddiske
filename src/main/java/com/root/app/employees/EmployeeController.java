@@ -6,9 +6,13 @@ import java.lang.reflect.Method;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 
 import com.root.app.ActionForward;
 
@@ -44,6 +48,14 @@ public class EmployeeController extends HttpServlet {
 			switch (uri) {
 			case "login.do" :
 				String mthd = request.getMethod();
+				
+//				Cookie 꺼내기
+				Cookie [] cookies = request.getCookies();
+				for(Cookie cookie : cookies) {
+					System.out.println(cookie.getName());
+					System.out.println(cookie.getValue());
+				}
+				
 				if(mthd.equalsIgnoreCase("post")) {
 					employeeService.login(request, actionForward);
 				}else {
@@ -60,6 +72,15 @@ public class EmployeeController extends HttpServlet {
 					actionForward.setPath("/WEB-INF/views/employees/join.jsp");
 				}
 				break;
+			case "logout.do" :
+				HttpSession session = request.getSession();
+//				session.setAttribute("user", null);
+//				session.removeAttribute("user");
+//				session.removeValue("user"); // depricated
+				session.invalidate(); // session 유효기간을 즉시 0초로 만듬
+				
+				actionForward.setFlag(false);
+				actionForward.setPath("../index.do");
 			}
 			
 		} catch (Exception e) {

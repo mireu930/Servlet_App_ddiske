@@ -1,6 +1,9 @@
 package com.root.app.employees;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.catalina.Session;
 
 import com.root.app.ActionForward;
 
@@ -47,6 +50,8 @@ public class EmployeeService {
 		
 		if(employeeDTO != null) {
 			// /index.do
+			HttpSession session = request.getSession();
+			session.setAttribute("user", employeeDTO);
 			actionForward.setFlag(false);
 			actionForward.setPath("../index.do");
 		}else {

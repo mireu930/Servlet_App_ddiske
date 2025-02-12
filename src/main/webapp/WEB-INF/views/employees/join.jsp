@@ -36,13 +36,13 @@
 				</fieldset>
 				<fieldset>
 					Job_ID : <!-- <input type="text" value="SA_REP" name="job_id"> --> <select name="job_id">
-						<option>SA_REP</option>
+						<option value="SA_REP">SA_REP</option>
 					</select> Salary : <input type="text" name="salary">
 					Commission_pct : <input type="text" name="commission_pct"><br>
 					Manager_ID : <!-- <input type="text" value="145" name="manager_id"> --> <select name="manager_id">
-						<option>145</option>
+						<option value="145">145</option>
 					</select> Department_ID : <!-- <input type="text" value="80" name="department_id"> --> <select name="department_id">
-						<option>80</option>
+						<option value="80">80</option>
 					</select>
 				</fieldset>
 				<fieldset>

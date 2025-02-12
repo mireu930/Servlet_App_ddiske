@@ -31,6 +31,10 @@
 								</button>
 							</div>
 						</fieldset>
+						<fieldset>
+							<input type="checkbox" name="">
+							<legend>ID 기억하기</legend>
+						</fieldset>
 					</form>
 				</div>
 			</section>
