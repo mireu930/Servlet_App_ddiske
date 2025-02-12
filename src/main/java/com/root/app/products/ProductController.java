@@ -62,10 +62,9 @@ public class ProductController extends HttpServlet {
 				String method = request.getMethod();
 				
 				if(method.toUpperCase().equals("POST")) {
-					productService.update(request, actionFoward);
+					productService.updateProcess(request, actionFoward);
 				} else {
-					actionFoward.setFlag(true);
-					actionFoward.setPath("/WEB-INF/views/products/update.jsp");
+					productService.update(request, actionFoward);
 				}
 			}
 			

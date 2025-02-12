@@ -1,6 +1,7 @@
 package com.root.app.products;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -50,21 +51,44 @@ public class ProductService {
 	}
 	
 	public void update(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
-		ProductDTO session = (ProductDTO)request.getSession().getAttribute("user");
 		
 		ProductDTO productDTO = new ProductDTO();
+		
+		productDTO.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+		productDTO = productDAO.getDetail(productDTO);
+		
+		request.setAttribute("dto", productDTO);
+		
+		actionFoward.setFlag(true);
+		actionFoward.setPath("/WEB-INF/views/products/update.jsp");
+		
+	}
+	
+	public void updateProcess(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
+		ProductDTO productDTO = new ProductDTO();
+		
+//		String productRateStr = request.getParameter("productRate");
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-/MM-dd");
+//		java.util.Date parsedDate = sdf.parse(productRateStr);
 		
 		productDTO.setProductName(request.getParameter("productName"));
 		productDTO.setProductDetail(request.getParameter("productDetail"));
 		productDTO.setProductRate(Double.parseDouble(request.getParameter("productRate")));
-//		productDTO.setProductDate(Date.parse(request.getParameter("productDate")));
-		productDTO.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+//		productDTO.setProductDate(parsedDate.getTime());
 		
 		
 		int result = productDAO.update(productDTO);
-		
+		String str = "실패";
+		if(result>0) {
 		actionFoward.setFlag(false);
 		actionFoward.setPath("./detail.do");
+		}else {
+			request.setAttribute("result", str);
+			request.setAttribute("path", "./list.do");
+			actionFoward.setFlag(true);
+			actionFoward.setPath("/WEB-INF/views/commons/result.jsp");
+		}
 		
-	}
+		}
+
 }

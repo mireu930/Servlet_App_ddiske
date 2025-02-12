@@ -21,6 +21,6 @@
 		<h3>정보가 없습니다.</h3>
 	</c:if>
 	
-	<a href = "./update.do">수정</a>
+	<a href = "./update.do?productNum=${dto.productNum}">수정</a>
 </body>
 </html>

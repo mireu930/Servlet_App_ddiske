@@ -1,5 +1,7 @@
 package com.root.app.tests.products;
 
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.root.app.products.ProductDAO;
@@ -12,11 +14,16 @@ public class ProductTest {
 		ProductDTO productDTO = new ProductDTO();
 		
 		try {
-			productDTO.setProductName("abc");
-			productDTO.setProductDetail("abcdefg");
-			productDTO.setProductRate(0.12);
+			SimpleDateFormat fmt= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 			
-			int result = productDAO.add(productDTO);
+			
+			productDTO.setProductName("부자적금");
+			productDTO.setProductRate(0.12);
+			productDTO.setProductDetail("잉?");
+			productDTO.setProductDate(Date.valueOf("2009-12-05"));
+			productDTO.setProductNum(1);
+			
+			int result = productDAO.update(productDTO);
 			
 			if(result > 0) {
 				System.out.println("성공");
