@@ -27,6 +27,8 @@ public class ProductDAO {
 			ar.add(productDTO);
 		}
 		
+		DBConnection.disConnect(rs, st, connection);
+		
 		return ar;
 	}
 	
@@ -46,6 +48,8 @@ public class ProductDAO {
 			productDTO.setProductRate(rs.getDouble("productrate"));
 		}
 		
+		DBConnection.disConnect(rs, st, connection);
+		
 		return productDTO;
 	}
 	
@@ -56,6 +60,8 @@ public class ProductDAO {
 		PreparedStatement st = connection.prepareStatement(sql);
 		st.setString(1, productDTO.getProductName());
 		int result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
 		
 		return result;
 		
@@ -68,6 +74,8 @@ public class ProductDAO {
 		st.setDouble(1, productDTO.getProductRate());
 		st.setString(2, productDTO.getProductDetail());
 		int result = st.executeUpdate();
+		
+		DBConnection.disConnect(st, connection);
 		
 		return result;
 		
