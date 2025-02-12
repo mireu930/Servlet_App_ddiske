@@ -1,4 +1,4 @@
-package com.root.app.accounts;
+package com.root.app.users;
 
 import java.io.IOException;
 
@@ -12,18 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 import com.root.app.ActionForward;
 
 /**
- * Servlet implementation class AccountController
+ * Servlet implementation class UserController
  */
-@WebServlet("/AccountController")
-public class AccountController extends HttpServlet {
+@WebServlet("/UserController")
+public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AccountService accountService;
+    private UserService userService;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AccountController() {
+    public UserController() {
         super();
-        accountService = new AccountService();
+        userService = new UserService();
     }
 
 	/**
@@ -32,19 +32,25 @@ public class AccountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ActionForward actionForward = new ActionForward();
+		String uri = request.getRequestURI();
+		uri = uri.substring(uri.lastIndexOf("/")+1);
 		
 		try {
-			
-			String uri = request.getRequestURI();
-			uri = uri.substring(uri.lastIndexOf("/")+1);
-			
 			switch (uri) {
-			case "add.do" :
-				accountService.add(request, actionForward);
+			case "join.do":
+				
+				break;
+
+			case "login.do" :
+				
+				break;
+			case "mypage.do" :
+				break;
+			case "update.do" :
+				break;
+			case "logout.do" :
 				break;
 			}
-			
-			
 			
 			
 			
@@ -52,8 +58,10 @@ public class AccountController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
 		view.forward(request, response);
+		
 		
 	}
 

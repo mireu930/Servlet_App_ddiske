@@ -10,7 +10,7 @@ import com.root.app.utils.DBConnection;
 
 public class ProductDAO {
 	
-	public List<ProductDTO> getList(ProductDTO productDTO) throws Exception {
+	public List<ProductDTO> getList() throws Exception {
 		Connection connection = DBConnection.getConnection();
 		String sql = "SELECT * FROM PRODUCTS";
 		PreparedStatement st = connection.prepareStatement(sql);
@@ -18,7 +18,7 @@ public class ProductDAO {
 		List<ProductDTO> ar = new ArrayList<ProductDTO>();
 		
 		while(rs.next()) {
-			productDTO = new ProductDTO();
+			ProductDTO productDTO = new ProductDTO();
 			productDTO.setProductDate(rs.getDate("productdate"));
 			productDTO.setProductDetail(rs.getString("productdetail"));
 			productDTO.setProductName(rs.getString("productname"));
