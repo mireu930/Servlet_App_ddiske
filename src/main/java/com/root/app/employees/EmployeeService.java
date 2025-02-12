@@ -78,12 +78,14 @@ public class EmployeeService {
 		EmployeeDTO employeeDTO = (EmployeeDTO)session.getAttribute("user");
 		employeeDTO.setFirst_name(request.getParameter("first_name"));
 		employeeDTO.setLast_name(request.getParameter("last_name"));
-		employeeDAO.update(employeeDTO);
+		int result = employeeDAO.update(employeeDTO);
 		
-		
-		session.setAttribute("user", employeeDTO);
-		actionForward.setFlag(false);
-		actionForward.setPath("./mypage.do");
+		if(result > 0) {
+			employeeDTO = employeeDAO.getDetail(employeeDTO);
+			session.setAttribute("user", employeeDTO);
+			actionForward.setFlag(false);
+			actionForward.setPath("./mypage.do");			
+		}
 	}
 
 }
