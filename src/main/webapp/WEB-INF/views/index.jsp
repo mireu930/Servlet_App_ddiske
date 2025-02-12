@@ -9,5 +9,7 @@
 <body>
 	<h3>시작</h3>
 	<a href = "/products/list.do">상품</a>
+	<a href = "/accounts/list.do">계좌</a>
+	<a href = "/users/list.do">유저</a>
 </body>
 </html>
