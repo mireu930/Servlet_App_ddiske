@@ -34,7 +34,9 @@ public class A extends HttpServlet {
 		System.out.println("Home Controller");
 		
 		//cookie
-		
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
+		//jsp fowarding
+		view.forward(request, response);
 	}
 
 	/**
