@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.root.app.ActionForward;
 
@@ -38,17 +39,40 @@ public class UserController extends HttpServlet {
 		try {
 			switch (uri) {
 			case "join.do":
-				
+				String method = request.getMethod();
+				if(method.equalsIgnoreCase("post")) {
+					userService.join(request, actionForward);					
+				}else {
+					actionForward.setFlag(true);
+					actionForward.setPath("/WEB-INF/views/users/join.jsp");
+				}
 				break;
 
 			case "login.do" :
-				
+				method = request.getMethod();
+				if(method.equalsIgnoreCase("post")) {
+					userService.login(request, actionForward);
+				}else {
+					actionForward.setFlag(true);
+					actionForward.setPath("/WEB-INF/views/users/login.jsp");
+				}
 				break;
 			case "mypage.do" :
+				actionForward.setFlag(true);
+				actionForward.setPath("/WEB-INF/views/users/mypage.jsp");
 				break;
 			case "update.do" :
+				method = request.getMethod();
+				if(method.equalsIgnoreCase("post")) {
+					userService.update(request, actionForward);
+				}else {
+					actionForward.setFlag(true);
+					actionForward.setPath("/WEB-INF/views/users/update.jsp");
+				}
 				break;
 			case "logout.do" :
+				HttpSession session = request.getSession();
+				session.invalidate();
 				break;
 			}
 			

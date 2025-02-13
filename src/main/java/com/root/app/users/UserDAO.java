@@ -40,6 +40,8 @@ public class UserDAO {
 			userDTO.setPassWord(rs.getString("password"));
 			userDTO.setPhone(rs.getString("phone"));
 			userDTO.setUserName(rs.getString("username"));
+		}else {
+			userDTO = null;
 		}
 		
 		DBConnection.disConnect(rs, st, connection);
@@ -50,11 +52,12 @@ public class UserDAO {
 	
 	public int update(UserDTO userDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "UPDATE INTO USERS SET NAME = ?, EMAIL = ?, PHONE = ?";
+		String sql = "UPDATE INTO USERS SET NAME = ?, EMAIL = ?, PHONE = ? WHERE USERNAME = ?";
 		PreparedStatement st = connection.prepareStatement(sql);
 		st.setString(1, userDTO.getName());
 		st.setString(2, userDTO.getEmail());
 		st.setString(3, userDTO.getPhone());
+		st.setString(4, userDTO.getUserName());
 		int result = st.executeUpdate();
 		
 		DBConnection.disConnect(st, connection);
