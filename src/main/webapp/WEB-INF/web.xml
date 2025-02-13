@@ -34,4 +34,24 @@
 	<url-pattern>/products/*</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>accountController</servlet-name>
+	<servlet-class>com.root.app.accounts.AccountController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>accountController</servlet-name>
+	<url-pattern>/accounts/*</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>userController</servlet-name>
+	<servlet-class>com.root.app.users.UserController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>userController</servlet-name>
+	<url-pattern>/users/*</url-pattern>
+</servlet-mapping>
+
 </web-app>

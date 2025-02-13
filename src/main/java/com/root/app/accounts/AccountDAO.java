@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.root.app.products.ProductDTO;
 import com.root.app.tests.connection.DBConnectionTest;
+import com.root.app.utils.DBConnection;
 
 public class AccountDAO {
 	
@@ -21,7 +22,7 @@ public class AccountDAO {
 		
 		List<AccountDTO> ar = new ArrayList();
 		
-		while(resultSet.next(){
+		while(resultSet.next()){
 			AccountDTO accountDTO = new AccountDTO();
 			accountDTO.setAccountNum(resultSet.getString(1));
 			accountDTO.setProductNum(resultSet.getInt(2));

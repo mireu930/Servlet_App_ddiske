@@ -8,11 +8,11 @@
 </head>
 <body>
 	<form action = "./update.do" method = "post">
-		<input type="text" name ="productNum" value = "${dto.productNum}" readonly>
-		<input type="text" name ="productName" value = "${dto.productName}">
-		<input type="text" name ="productDetail" value = "${dto.productDetail}">
-		<input type="text" name ="productRate" value = "${dto.productRate}">
-		<input type="text" name ="productDate" value = "${dto.productDate}">
+		<input type="text" name ="user_name" value = "${user.user_name}" readonly>
+		<input type="password" name ="password" value = "${user.password}">
+		<input type="text" name ="name" value = "${user.name}">
+		<input type="text" name ="phone" value = "${user.phone}">
+		<input type="text" name ="email" value = "${user.email}">
 		<input type = "submit" value = "수정">
 	</form>
 </body>

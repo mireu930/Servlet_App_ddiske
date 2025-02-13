@@ -9,15 +9,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach items="${list}" var="ar">
-		<h3><a href = "./detail.do?productNum=${ar.productNum}">${ar.productNum}</a></h3>
-		<h3>${ar.productName}</h3>
-		<h3>${ar.productDetail}</h3>
-		<h3>${ar.productRate}</h3>
-		<h3>${ar.productDate}</h3>
-		<h3>----</h3>
-	</c:forEach>
+	<form action="login.do" method = "post">
+		<fieldset>
+			<legend>아이디</legend>
+			<input type ="text" name = "user_name">
+		</fieldset>
+		<fieldset>
+			<legend>비밀번호</legend>
+			<input type ="password" name = "password">
+		</fieldset>
+		<fieldset>
+			<input type ="submit" value = "로그인">
+		</fieldset>
+		
+	</form>
 	
-	<a href = "./add.do">등록</a>
 </body>
 </html>

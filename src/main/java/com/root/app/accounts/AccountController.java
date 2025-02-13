@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 import com.root.app.ActionFoward;
 
 /**
- * Servlet implementation class ProductController
+ * Servlet implementation class AccountController
  */
-@WebServlet("/ProductController")
+@WebServlet("/AccountController")
 public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AccountService accountService;
+	private AccountService accountService;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,7 +34,7 @@ public class AccountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("accountController");
+System.out.println("accountController");
 		
 		String uri = request.getRequestURI();
 		

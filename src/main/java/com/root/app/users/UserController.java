@@ -5,19 +5,22 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.root.app.ActionFoward;
 
 /**
- * Servlet implementation class ProductController
+ * Servlet implementation class UserController
  */
-@WebServlet("/ProductController")
+@WebServlet("/UserController")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private UserService userService;
+	private UserService userService;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,7 +36,7 @@ public class UserController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("userController");
+System.out.println("userController");
 		
 		String uri = request.getRequestURI();
 		
@@ -65,22 +68,22 @@ public class UserController extends HttpServlet {
 				if(method.toUpperCase().equals("POST")) {
 					userService.login(request, actionFoward);
 				}else {
-					actionForward.setFlag(true);
-					actionForward.setPath("/WEB-INF/views/users/login.jsp");
+					actionFoward.setFlag(true);
+					actionFoward.setPath("/WEB-INF/views/users/login.jsp");
 				}
 				
 			} else if(uri.equals("logout.do")) {
 				HttpSession session = request.getSession();
 				
 				session.invalidate();
-				actionForward.setFlag(false);
-				actionForward.setPath("../index.do");
+				actionFoward.setFlag(false);
+				actionFoward.setPath("../index.do");
 				
 			} else if(uri.equals("mypage.do")) {
 				userService.login(request, actionFoward);
 				
-				actionForward.setFlag(true);
-				actionForward.setPath("/WEB-INF/views/users/mypage.jsp");
+				actionFoward.setFlag(true);
+				actionFoward.setPath("/WEB-INF/views/users/mypage.jsp");
 			} else if(uri.equals("update.do")) {
 				String method = request.getMethod();
 				
@@ -89,8 +92,8 @@ public class UserController extends HttpServlet {
 				} else {
 					userService.login(request, actionFoward);
 					
-					actionForward.setFlag(true);
-					actionForward.setPath("/WEB-INF/views/users/update.jsp");
+					actionFoward.setFlag(true);
+					actionFoward.setPath("/WEB-INF/views/users/update.jsp");
 				}
 			}
 			
@@ -104,7 +107,6 @@ public class UserController extends HttpServlet {
 		} else {
 			response.sendRedirect(actionFoward.getPath());
 		}
-		
 	}
 
 	/**
