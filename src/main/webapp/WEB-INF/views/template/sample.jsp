@@ -15,6 +15,6 @@
 	<section class="contents">
 		<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 	</section>
-	
+	<c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 </body>
 </html>

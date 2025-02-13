@@ -81,3 +81,30 @@
 .contents_top > li:hover {
     background-color: rgb(68, 54, 44);
 }
+
+.footer {
+    min-width: 980px;
+    background-color: white;
+    border-top: 1px antiquewhite solid;
+    display: flex;
+    justify-content: center;
+}
+
+.footer_main {
+    border: 1px solid white;
+    width: 980px;
+    height: 35px;
+    padding: 20px 0 10px;
+    background-color: white;
+    position: relative;
+}
+
+.footer_main a {
+    display: inline-block;
+    padding-right: 20px;
+}
+
+.footer_main h6 {
+    display: block;
+    padding-top: 30px;
+}
