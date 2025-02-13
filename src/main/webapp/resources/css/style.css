@@ -150,6 +150,11 @@
   /* background-color:aqua; */
   margin:0 auto;
 }
+
+#select {
+	color: white;
+}
+
 /* --------------------------- footer ----------------------------------- */
 .footer {
   height: 219px;

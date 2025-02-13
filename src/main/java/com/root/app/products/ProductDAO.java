@@ -12,7 +12,7 @@ public class ProductDAO {
 
 	public List<ProductDTO> getList() throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT * FROM PRODUCTS ";
+		String sql = "SELECT * FROM PRODUCTS ORDER BY PRODUCTNUM ASC ";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		ResultSet resultSet = preparedStatement.executeQuery();

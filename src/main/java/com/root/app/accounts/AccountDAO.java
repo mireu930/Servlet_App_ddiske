@@ -15,7 +15,7 @@ public class AccountDAO {
 	
 	public List<AccountDTO> getList() throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT * FROM ACCOUNTS ";
+		String sql = "SELECT * FROM ACCOUNTS ORDER BY accountdate asc";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
@@ -64,7 +64,7 @@ public class AccountDAO {
 
 	public int add(AccountDTO accountDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "INSERT INTO ACCOUNTS\r\n"
+		String sql = "INSERT INTO ACCOUNTS "
 				+ "VALUES (?,?,?,0,SYSDATE)";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
