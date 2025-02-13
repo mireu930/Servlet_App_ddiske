@@ -1,0 +1,83 @@
+.header {
+    display: flex;
+    justify-content: center;
+    min-width: 980px;
+    background-color: white;
+}
+
+.headbox {
+    border: 1px solid white;
+    width: 980px;
+    height: 35px;
+    padding: 20px 0 10px;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    overflow: hidden;
+    width: 0;
+    height: 24px;
+    padding: 0 0 0 108px;
+    line-height: 24px;
+    background: url(/resources/images/icon_set1_n2.png) no-repeat -280px 2px;
+}
+
+.headbox > ul {
+	position: relative;
+	display: flex;
+	justify-content:space-between;
+	width: 100px;
+	font-size: small;
+	margin-right: 20px;
+	line-height: 24px;
+	
+}
+
+.headbox li {
+	position: relative;
+	font-weight: bold;
+}
+
+.contents {
+    display: flex;
+    justify-content: center;
+    min-width: 980px;
+    min-height: 1600px;
+    background-color: white;
+}
+
+.nav {
+	position: relative;
+	width: 980px;
+	height: 50px;
+	padding: 0;
+	background: #766554;
+	
+}
+
+.contents_top {
+	height: 100%;
+}
+
+.contents_top a {
+    display: block;
+    overflow: hidden;
+    width: 84px;
+    text-align: center;
+    
+    margin-top: 15px;
+    color: white;
+    font-weight: bold;
+}
+
+.contents_top > li {
+    float: left;
+    height: 100%;
+    padding: 0 5px;
+}
+
+.contents_top > li:hover {
+    background-color: rgb(68, 54, 44);
+}

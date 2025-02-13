@@ -18,8 +18,44 @@
 	<!-- 배포서술자 DD -->
 
 	<!-- Servlet 객체 생성 -> 클래스명 참조변수명 = new 생성자(); FQDN(Full Quality Domain Name) -->
-
+	<servlet>
+		<servlet-name>homeController</servlet-name>
+		<servlet-class>com.root.app.HomeController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>userController</servlet-name>
+		<servlet-class>com.root.app.users.UserController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>accountController</servlet-name>
+		<servlet-class>com.root.app.accounts.AccountController</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>productController</servlet-name>
+		<servlet-class>com.root.app.products.ProductController</servlet-class>
+	</servlet>
 	<!-- 어떤 요청이 왔을 때 누구를 실행 -->
-
+	<servlet-mapping>
+		<servlet-name>homeController</servlet-name>
+		<url-pattern>/index.do</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>userController</servlet-name>
+		<url-pattern>/users/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>accountController</servlet-name>
+		<url-pattern>/accounts/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>productController</servlet-name>
+		<url-pattern>/products/*</url-pattern>
+	</servlet-mapping>
 
 </web-app>
