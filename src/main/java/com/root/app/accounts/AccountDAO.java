@@ -8,8 +8,8 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.root.app.products.ProductDTO;
-import com.root.app.tests.connection.DBConnectionTest;
 import com.root.app.utils.DBConnection;
+import com.root.app.ztests.connection.DBConnectionTest;
 
 public class AccountDAO {
 	
@@ -94,15 +94,15 @@ public class AccountDAO {
 	
 	public int update(AccountDTO accountDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "UPDATE ACCOUNTS SET PRODUCTNUM=?,USER_NAME=?,ACCOUNTBALANCE=?,ACCOUNTDATE=? "
+		String sql = "UPDATE ACCOUNTS SET PRODUCTNUM=?,USER_NAME=?,ACCOUNTBALANCE=?"
 				+ "WHERE ACCOUNTNUM=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		preparedStatement.setInt(1, accountDTO.getProductNum());
 		preparedStatement.setString(2, accountDTO.getUser_name());
 		preparedStatement.setLong(3, accountDTO.getAccountsBalance());
-		preparedStatement.setDate(4, accountDTO.getAccountDate());
-		preparedStatement.setString(5, accountDTO.getAccountNum());
+//		preparedStatement.setDate(4, accountDTO.getAccountDate());
+		preparedStatement.setString(4, accountDTO.getAccountNum());
 		
 		int result = preparedStatement.executeUpdate();
 		

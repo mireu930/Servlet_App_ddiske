@@ -35,8 +35,7 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-System.out.println("userController");
+		System.out.println("userController");
 		
 		String uri = request.getRequestURI();
 		
@@ -80,7 +79,7 @@ System.out.println("userController");
 				actionFoward.setPath("../index.do");
 				
 			} else if(uri.equals("mypage.do")) {
-				userService.login(request, actionFoward);
+				userService.detail(request, actionFoward);
 				
 				actionFoward.setFlag(true);
 				actionFoward.setPath("/WEB-INF/views/users/mypage.jsp");

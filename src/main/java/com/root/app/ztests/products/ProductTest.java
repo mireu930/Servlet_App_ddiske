@@ -1,4 +1,4 @@
-package com.root.app.tests.products;
+package com.root.app.ztests.products;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;

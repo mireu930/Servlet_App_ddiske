@@ -1,5 +1,4 @@
 package com.root.app.users;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +9,13 @@ public class UserService {
 	
 	public UserService() {
 		userDAO = new UserDAO();
+	}
+	
+	public void detail(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
+		UserDTO userDTO = (UserDTO)request.getSession().getAttribute("user");
+		
+		UserDTO result = userDAO.login(userDTO);
+		request.setAttribute("user2", result);
 	}
 	
 	public void login(HttpServletRequest request, ActionFoward actionFoward) throws Exception  {
@@ -62,7 +68,28 @@ public class UserService {
 	}
 	
 	public void update(HttpServletRequest request, ActionFoward actionFoward) throws Exception  {
+		UserDTO session = (UserDTO)request.getSession().getAttribute("user");
+		UserDTO userDTO = new UserDTO();
 		
+		userDTO.setUser_name(session.getUser_name());
+		userDTO.setPassword(session.getPassword());
+		userDTO.setName(session.getName());
+		userDTO.setPhone(session.getPhone());
+		userDTO.setEmail(session.getEmail());
+		userDTO.setUser_name(session.getUser_name());
+		
+		int result = userDAO.update(userDTO);
+		
+		if(result > 0) {
+			session.setUser_name(userDTO.getUser_name());
+			session.setPassword(userDTO.getPassword());
+			session.setName(userDTO.getName());
+			session.setPhone(userDTO.getPhone());
+			session.setEmail(userDTO.getEmail());
+		}
+		
+		actionFoward.setFlag(false);
+		actionFoward.setPath("./mypage.do");
 	}
 
 }

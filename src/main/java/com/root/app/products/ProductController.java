@@ -17,7 +17,8 @@ import com.root.app.ActionFoward;
 @WebServlet("/ProductController")
 public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private ProductService productService;
+	private ProductService productService;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -33,7 +34,7 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ").append(request.getContextPath());
-		System.out.println("productController");
+System.out.println("productController");
 		
 		String uri = request.getRequestURI();
 		
@@ -78,7 +79,6 @@ public class ProductController extends HttpServlet {
 		} else {
 			response.sendRedirect(actionFoward.getPath());
 		}
-		
 	}
 
 	/**
