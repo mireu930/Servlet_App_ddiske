@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>에러</h1>
+	<a href="/index.do">홈으로</a>
 </body>
 </html>

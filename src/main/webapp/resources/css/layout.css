@@ -28,11 +28,10 @@
 	position: relative;
 	display: flex;
 	justify-content:space-between;
-	width: 100px;
 	font-size: small;
 	margin-right: 20px;
 	line-height: 24px;
-	
+	width: 150px;
 }
 
 .headbox li {

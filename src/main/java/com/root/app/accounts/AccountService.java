@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.catalina.Session;
 
 import com.root.app.ActionForward;
+import com.root.app.users.UserDTO;
 
 public class AccountService {
 	
@@ -18,8 +19,9 @@ public class AccountService {
 	public void add(HttpServletRequest request, ActionForward actionForward) throws Exception {
 		HttpSession session = request.getSession();
 		AccountDTO accountDTO = new AccountDTO();
-		accountDTO.setProductNum(Long.parseLong(request.getParameter("productNum")));
-		accountDTO.setUserName((String)session.getAttribute("user"));
+		UserDTO userDTO = (UserDTO)session.getAttribute("user");
+		accountDTO.setProductNum(Long.parseLong(request.getParameter("productnum")));
+		accountDTO.setUserName(userDTO.getUserName());
 		int result = accountDAO.add(accountDTO);
 		String str = "가입 실패";
 		request.setAttribute("path", "../products/detail.do");
@@ -29,7 +31,7 @@ public class AccountService {
 			request.setAttribute("path", "../products/list.do");
 		}
 		request.setAttribute("result", str);
-		actionForward.setFlag(false);
+		actionForward.setFlag(true);
 		actionForward.setPath("/WEB-INF/views/commons/result.jsp");
 		
 	}

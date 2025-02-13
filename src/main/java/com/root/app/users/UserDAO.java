@@ -52,7 +52,7 @@ public class UserDAO {
 	
 	public int update(UserDTO userDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "UPDATE INTO USERS SET NAME = ?, EMAIL = ?, PHONE = ? WHERE USERNAME = ?";
+		String sql = "UPDATE USERS SET NAME = ?, EMAIL = ?, PHONE = ? WHERE USERNAME = ?";
 		PreparedStatement st = connection.prepareStatement(sql);
 		st.setString(1, userDTO.getName());
 		st.setString(2, userDTO.getEmail());

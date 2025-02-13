@@ -70,7 +70,6 @@ public class UserService {
 		userDTO.setPhone(request.getParameter("phone"));
 		int result = userDAO.update(userDTO);
 		String str = "정보 수정 실패";
-		
 		if(result > 0) {
 			str = "정보 수정 성공";
 			request.getSession().setAttribute("user", userDAO.login(userDTO));

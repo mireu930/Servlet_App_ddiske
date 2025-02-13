@@ -75,6 +75,8 @@ public class UserController extends HttpServlet {
 			case "logout.do" :
 				HttpSession session = request.getSession();
 				session.invalidate();
+				actionForward.setFlag(false);
+				actionForward.setPath("/index.do");
 				break;
 			}
 			

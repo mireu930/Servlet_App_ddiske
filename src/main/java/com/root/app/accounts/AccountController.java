@@ -17,57 +17,58 @@ import com.root.app.ActionForward;
 @WebServlet("/AccountController")
 public class AccountController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private AccountService accountService;
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AccountController() {
-        super();
-        accountService = new AccountService();
-    }
+	private AccountService accountService;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		ActionForward actionForward = new ActionForward();
-		actionForward.setFlag(true);
-		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
-		
-		try {
-			
-			String uri = request.getRequestURI();
-			uri = uri.substring(uri.lastIndexOf("/")+1);
-			
-			switch (uri) {
-			case "add.do" :
-				accountService.add(request, actionForward);
-				break;
-			}
-			
-			
-			
-			
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		if(actionForward.isFlag()) {
-			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
-			view.forward(request, response);			
-		}else {
-			// redirect
-			response.sendRedirect(actionForward.getPath());
-		}
-		
+	public AccountController() {
+		super();
+		accountService = new AccountService();
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		ActionForward actionForward = new ActionForward();
+		actionForward.setFlag(true);
+		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
+
+		try {
+
+			String uri = request.getRequestURI();
+			uri = uri.substring(uri.lastIndexOf("/") + 1);
+
+			switch (uri) {
+			case "add.do":
+				accountService.add(request, actionForward);
+				break;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		if (actionForward.isFlag()) {
+			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+			view.forward(request, response);
+		} else {
+			// redirect
+			response.sendRedirect(actionForward.getPath());
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
