@@ -1,11 +1,9 @@
 package com.root.app.accounts;
-
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 
 import com.root.app.ActionFoward;
-import com.root.app.products.ProductDTO;
 
 public class AccountService {
 	
@@ -73,8 +71,8 @@ public class AccountService {
 		int result = accountDAO.update(accountDTO);
 		String str = "실패";
 		if(result>0) {
-		actionFoward.setFlag(false);
-		actionFoward.setPath("./detail.do");
+			actionFoward.setFlag(false);
+			actionFoward.setPath("./detail.do");
 		}else {
 			request.setAttribute("result", str);
 			request.setAttribute("path", "./list.do");

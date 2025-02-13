@@ -8,20 +8,21 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.root.app.products.ProductDTO;
-import com.root.app.tests.connection.DBConnectionTest;
+import com.root.app.utils.DBConnection;
+import com.root.app.ztests.connection.DBConnectionTest;
 
 public class AccountDAO {
 	
 	public List<AccountDTO> getList() throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT * FROM ACCOUNTS ";
+		String sql = "SELECT * FROM ACCOUNTS ORDER BY accountdate asc";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
 		List<AccountDTO> ar = new ArrayList();
 		
-		while(resultSet.next(){
+		while(resultSet.next()){
 			AccountDTO accountDTO = new AccountDTO();
 			accountDTO.setAccountNum(resultSet.getString(1));
 			accountDTO.setProductNum(resultSet.getInt(2));
@@ -63,7 +64,7 @@ public class AccountDAO {
 
 	public int add(AccountDTO accountDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "INSERT INTO ACCOUNTS\r\n"
+		String sql = "INSERT INTO ACCOUNTS "
 				+ "VALUES (?,?,?,0,SYSDATE)";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
@@ -93,15 +94,15 @@ public class AccountDAO {
 	
 	public int update(AccountDTO accountDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "UPDATE ACCOUNTS SET PRODUCTNUM=?,USER_NAME=?,ACCOUNTBALANCE=?,ACCOUNTDATE=? "
+		String sql = "UPDATE ACCOUNTS SET PRODUCTNUM=?,USER_NAME=?,ACCOUNTBALANCE=?"
 				+ "WHERE ACCOUNTNUM=?";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		preparedStatement.setInt(1, accountDTO.getProductNum());
 		preparedStatement.setString(2, accountDTO.getUser_name());
 		preparedStatement.setLong(3, accountDTO.getAccountsBalance());
-		preparedStatement.setDate(4, accountDTO.getAccountDate());
-		preparedStatement.setString(5, accountDTO.getAccountNum());
+//		preparedStatement.setDate(4, accountDTO.getAccountDate());
+		preparedStatement.setString(4, accountDTO.getAccountNum());
 		
 		int result = preparedStatement.executeUpdate();
 		

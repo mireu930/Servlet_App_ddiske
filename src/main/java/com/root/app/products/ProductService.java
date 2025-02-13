@@ -1,10 +1,7 @@
 package com.root.app.products;
-
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
+
+import java.util.List;
 
 import com.root.app.ActionFoward;
 
@@ -80,8 +77,8 @@ public class ProductService {
 		int result = productDAO.update(productDTO);
 		String str = "실패";
 		if(result>0) {
-		actionFoward.setFlag(false);
-		actionFoward.setPath("./detail.do");
+			actionFoward.setFlag(false);
+			actionFoward.setPath("./detail.do");
 		}else {
 			request.setAttribute("result", str);
 			request.setAttribute("path", "./list.do");

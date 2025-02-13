@@ -10,15 +10,15 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
 /**
- * Servlet Filter implementation class EncodingFilter
+ * Servlet Filter implementation class Encodingfilter
  */
-@WebFilter("/EncodingFilter")
-public class EncodingFilter implements Filter {
+@WebFilter("/Encodingfilter")
+public class Encodingfilter implements Filter {
 
     /**
      * Default constructor. 
      */
-    public EncodingFilter() {
+    public Encodingfilter() {
         // TODO Auto-generated constructor stub
     }
 

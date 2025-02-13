@@ -9,18 +9,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:if test="${not empty dto}">
-		<h3>${dto.productNum}</h3>
-		<h3>${dto.productName}</h3>
-		<h3>${dto.productDetail}</h3>
-		<h3>${dto.productRate}</h3>
-		<h3>${dto.productDate}</h3>
+	<c:if test="${not empty user}">
+		<h3>${user.user_name}</h3>
+		<h3>${user.password}</h3>
+		<h3>${user2.name}</h3>
+		<h3>${user2.phone}</h3>
+		<h3>${user2.email}</h3>
 	</c:if>
 	
-	<c:if test="${empty dto}">
+	<c:if test="${empty user}">
 		<h3>정보가 없습니다.</h3>
 	</c:if>
 	
-	<a href = "./update.do?productNum=${dto.productNum}">수정</a>
+	<a href = "./update.do?user_name=${user.user_name}">수정</a>
 </body>
 </html>

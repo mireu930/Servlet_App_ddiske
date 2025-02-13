@@ -5,19 +5,22 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.root.app.ActionFoward;
 
 /**
- * Servlet implementation class ProductController
+ * Servlet implementation class UserController
  */
-@WebServlet("/ProductController")
+@WebServlet("/UserController")
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private UserService userService;
+	private UserService userService;
+       
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -32,7 +35,6 @@ public class UserController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
 		System.out.println("userController");
 		
 		String uri = request.getRequestURI();
@@ -77,7 +79,7 @@ public class UserController extends HttpServlet {
 				actionFoward.setPath("../index.do");
 				
 			} else if(uri.equals("mypage.do")) {
-				userService.login(request, actionFoward);
+				userService.detail(request, actionFoward);
 				
 				actionFoward.setFlag(true);
 				actionFoward.setPath("/WEB-INF/views/users/mypage.jsp");
@@ -104,7 +106,6 @@ public class UserController extends HttpServlet {
 		} else {
 			response.sendRedirect(actionFoward.getPath());
 		}
-		
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package com.root.app.tests.connection;
+package com.root.app.ztests.connection;
 
 import java.sql.Connection;
 
