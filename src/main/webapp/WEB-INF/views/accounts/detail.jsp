@@ -10,8 +10,7 @@
 <link rel="stylesheet" href="../resources/css/list.css">
 </head>
 <body>
-<%@ include file="../frame/account/account_detail_logo.jsp" %>
-  
+  <c:import url="../frame/account/account_detail_logo.jsp"></c:import>
   <div class="content">
   <table>
   	<c:if test="${not empty dto}">
@@ -40,6 +39,6 @@
 		<h3>정보가 없습니다.</h3>
 	</c:if>
   </div>
-<%@ include file="../frame/footer.jsp" %>
+<c:import url="../frame/footer.jsp"></c:import>
 </body>
 </html>

@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="../resources/css/reset.css">
 </head>
 <body>
-  <%@ include file="../frame/product/product_logo.jsp" %>
+ <c:import url="../frame/product/product_logo.jsp"></c:import>
   <div class="content">
   <table>
   <thead>
@@ -36,6 +36,6 @@
 	</tbody>
 	</table>
   </div>
-  <%@ include file="../frame/footer.jsp" %>
+  <c:import url="../frame/footer.jsp"></c:import>
 </body>
 </html>

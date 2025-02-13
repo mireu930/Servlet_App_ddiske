@@ -19,7 +19,11 @@ public class UserDAO {
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
 		if(resultSet.next()) {
-			
+			userDTO.setUser_name(resultSet.getString(1));
+			userDTO.setPassword(resultSet.getString(2));
+			userDTO.setName(resultSet.getString(3));
+			userDTO.setPhone(resultSet.getString(4));
+			userDTO.setEmail(resultSet.getString(5));
 		} else {
 			userDTO = null;
 		}

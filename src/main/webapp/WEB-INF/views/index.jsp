@@ -10,10 +10,8 @@
 <link rel="stylesheet" href="../resources/css/reset.css">
 </head>
 <body>
-  <%@ include file="./frame/logo.jsp" %>
-  <div class="content">
-
-  </div>
- <%@ include file="./frame/footer.jsp" %>
+	<c:import url="./frame/logo.jsp"></c:import>
+  	<div class="content"></div>
+  	<c:import url="./frame/footer.jsp"></c:import>
 </body>
 </html>
