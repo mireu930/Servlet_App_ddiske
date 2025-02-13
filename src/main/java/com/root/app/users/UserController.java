@@ -65,22 +65,22 @@ public class UserController extends HttpServlet {
 				if(method.toUpperCase().equals("POST")) {
 					userService.login(request, actionFoward);
 				}else {
-					actionForward.setFlag(true);
-					actionForward.setPath("/WEB-INF/views/users/login.jsp");
+					actionFoward.setFlag(true);
+					actionFoward.setPath("/WEB-INF/views/users/login.jsp");
 				}
 				
 			} else if(uri.equals("logout.do")) {
 				HttpSession session = request.getSession();
 				
 				session.invalidate();
-				actionForward.setFlag(false);
-				actionForward.setPath("../index.do");
+				actionFoward.setFlag(false);
+				actionFoward.setPath("../index.do");
 				
 			} else if(uri.equals("mypage.do")) {
 				userService.login(request, actionFoward);
 				
-				actionForward.setFlag(true);
-				actionForward.setPath("/WEB-INF/views/users/mypage.jsp");
+				actionFoward.setFlag(true);
+				actionFoward.setPath("/WEB-INF/views/users/mypage.jsp");
 			} else if(uri.equals("update.do")) {
 				String method = request.getMethod();
 				
@@ -89,8 +89,8 @@ public class UserController extends HttpServlet {
 				} else {
 					userService.login(request, actionFoward);
 					
-					actionForward.setFlag(true);
-					actionForward.setPath("/WEB-INF/views/users/update.jsp");
+					actionFoward.setFlag(true);
+					actionFoward.setPath("/WEB-INF/views/users/update.jsp");
 				}
 			}
 			
