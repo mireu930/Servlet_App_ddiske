@@ -1,3 +1,4 @@
+<%@page import="com.root.app.products.ProductDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -12,24 +13,28 @@
 	<div class="header">
 		<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
 	</div>
-	
 	<div class="contents">
 		<nav class="nav">
 			<ul class="contents_top">
 				<li><a href="/products/list.do">돌아가기</a></li>
 			</ul>
+
 		</nav>
 	</div>
-	
 	<div class="contents_main">
-		<form action="./add.do" method="post">
-			<h6>상품명 : </h6>
-			<input type="text" name="productname"><br>
-			<button type="submit">등록하기</button>
+		<form action="./update.do" method="post">
+			<h3>상품 이율 : 
+				<input type="text" name="productrate" value="${product.productRate}">
+			</h3>
+			<br>
+			<h3>상품 상세정보 : 
+				<input type="text" name="productdetail" value="${product.productDetail }">
+			</h3>
+			<br>
+			<input type="hidden" name="productnum" value="${product.productNum }">
+			<button type="submit">수정하기</button>
 		</form>
 	</div>
-	
 	<c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
-	
 </body>
 </html>

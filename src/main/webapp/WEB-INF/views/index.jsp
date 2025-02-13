@@ -13,7 +13,12 @@
 		<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
 	</div>
 	<section class="contents">
-		<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
+		<nav class="nav">
+			<ul class="contents_top">
+				<li><a href="/products/list.do">상품 보러 가기</a></li>
+			</ul>
+
+		</nav>
 	</section>
 	<c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 </body>

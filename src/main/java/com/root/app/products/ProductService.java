@@ -53,7 +53,7 @@ public class ProductService {
 		
 	}
 	
-	public void update(HttpServletRequest request, ActionForward actionForward)throws Exception {
+	public void updateProcess(HttpServletRequest request, ActionForward actionForward)throws Exception {
 		
 		ProductDTO productDTO = new ProductDTO();
 		productDTO.setProductNum(Long.parseLong(request.getParameter("productnum")));
@@ -72,6 +72,18 @@ public class ProductService {
 			actionForward.setPath("/WEB-INF/views/commons/result.jsp");
 		}
 		
+	}
+	
+	public void update(HttpServletRequest request, ActionForward actionForward)throws Exception {
+		
+		ProductDTO productDTO = new ProductDTO();
+		productDTO.setProductNum(Long.parseLong(request.getParameter("productnum")));
+		productDTO = productDAO.getDetail(productDTO);
+		
+		request.setAttribute("product", productDTO);
+		
+		actionForward.setFlag(true);
+		actionForward.setPath("/WEB-INF/views/products/update.jsp");
 	}
 
 }

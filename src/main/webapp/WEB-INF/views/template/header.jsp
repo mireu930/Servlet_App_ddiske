@@ -4,7 +4,7 @@
 
 
 <div class="headbox">
-	<a href="/WEB-INF/views/index.jsp" class="logo"></a>
+	<a href="/index.do" class="logo"></a>
 	<ul>
 		<c:if test="${empty user }">
 			<li><a href="/users/login.do">로그인</a></li>

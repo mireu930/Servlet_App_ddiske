@@ -32,6 +32,8 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ActionForward actionForward = new ActionForward();
+//		actionForward.setFlag(true);
+//		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
 		
 		try {
 			String uri = request.getRequestURI();
@@ -58,10 +60,9 @@ public class ProductController extends HttpServlet {
 			case "update.do" :
 				method = request.getMethod();
 				if(method.equalsIgnoreCase("post")) {
-					productService.update(request, actionForward);
+					productService.updateProcess(request, actionForward);
 				}else {
-					actionForward.setFlag(true);
-					actionForward.setPath("/WEB-INF/views/products/list.jsp");
+					productService.update(request, actionForward);
 				}
 				break;
 			}
@@ -71,8 +72,13 @@ public class ProductController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/products/list.jsp");
-		view.forward(request, response);
+//		if(actionForward.isFlag()) {
+			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+			view.forward(request, response);			
+//		}else {
+//			// redirect
+//			response.sendRedirect(actionForward.getPath());
+//		}
 		
 	}
 

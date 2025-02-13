@@ -4,10 +4,10 @@
 
 <nav class="nav">
 	<ul class="contents_top">
-		<li><a href="/WEB-INF/views/products/list.jsp">상품 목록</a></li>
-		<li><a href="/WEB-INF/views/products/list.jsp">상세 정보</a></li>
-		<li><a href="/WEB-INF/views/products/add.jsp">상품 등록</a></li>
-		<li><a href="/WEB-INF/views/products/list.jsp">정보 수정</a></li>
+		<li><a href="/products/list.do">상품 목록</a></li>
+		<li><a href="/products/list.do">상세 정보</a></li>
+		<li><a href="/products/add.do">상품 등록</a></li>
+		<li><a href="/products/list.do">정보 수정</a></li>
 	</ul>
 
 </nav>

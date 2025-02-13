@@ -32,6 +32,8 @@ public class AccountController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ActionForward actionForward = new ActionForward();
+		actionForward.setFlag(true);
+		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
 		
 		try {
 			
@@ -52,8 +54,13 @@ public class AccountController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/index.jsp");
-		view.forward(request, response);
+		if(actionForward.isFlag()) {
+			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
+			view.forward(request, response);			
+		}else {
+			// redirect
+			response.sendRedirect(actionForward.getPath());
+		}
 		
 	}
 
