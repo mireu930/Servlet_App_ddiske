@@ -1,0 +1,243 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.header{
+  height: 167px;
+  background-color: blue;
+}
+.header_logo_wrap {
+  background-color:white;
+}
+
+.header_logo{
+  height: 52px;
+  width: 920px;
+  background-color:white;
+  display: flex;
+  margin: 0 auto;
+}
+
+.header_logo img {
+  padding: 13px;
+}
+
+.header_logo_title {
+  /* height: 52px; */
+  width: 15%;
+  display: flex;
+  margin: 10px 0 10px 2px;
+}
+
+.header_logo_title ul{
+  display: flex;
+  list-style: none;
+  /* background-color:red; */
+  justify-content: space-between;
+  
+}
+
+.header_logo_in ul {
+  display: flex;
+  list-style: none;
+  /* background-color:red; */
+  justify-content: space-between;
+}
+
+.header_logo a {
+  text-decoration: none;
+}
+
+#sports1 {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+}
+#sports2,#sports3  {
+  font-size: 10px;
+  color: gray;
+}
+
+.header_logo_in {
+  height: 52px;
+  width: 20%;
+  margin: 10px 0 10px 650px;
+  /* background-color:aqua; */
+  padding-left: 5%;
+}
+
+#log, #menu {
+  color: black;
+  font-size: 10px;
+  border: 1px solid grey;
+  padding: 2px;
+}
+
+/* -------------------------- sport_list ------------------------------------ */
+.sport_list_wrap{
+  border-top: 1px solid rgb(209, 207, 207);
+  background-color: white;
+}
+
+.sport_list {
+  height: 52px;
+  width: 920px;
+  background-color:white;
+  display: flex;
+  /* justify-content: space-between; */
+  margin: 0 auto;
+  box-sizing:border-box;
+  padding: 10px 0;
+  /* background-color: red */
+}
+
+.sport_list ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 30%;
+  /* background-color:blueviolet */
+  
+}
+
+.sport_list a {
+  text-decoration: none;
+  color: black;
+}
+/* -------------------------- soccer_detail------------------------------------ */
+.soccer_detail_wrap_wrap {
+  background-color: rgb(218, 217, 217);
+  border-bottom: 1px solid rgb(187, 187, 187);
+  margin-bottom: 10px;
+}
+
+.soccer_detail_wrap {
+  background-color: blue;
+  
+}
+
+.soccer_detail {
+  height: 52px;
+  width: 920px;
+  background-color:blue;
+  display: flex;
+  /* justify-content: space-between; */
+  margin: 10px auto;
+  box-sizing:border-box;
+  padding: 10px 0;
+  /* background-color: red */
+}
+
+.soccer_detail ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 30%;
+  /* background-color:blueviolet */
+  
+}
+
+.soccer_detail a {
+  text-decoration: none;
+  color: black;
+}
+
+
+/* -------------------------- content ------------------------------------ */
+.content {
+  height: 1020px;
+  width: 920px;
+  /* background-color:aqua; */
+  margin:0 auto;
+}
+/* --------------------------- footer ----------------------------------- */
+.footer {
+  height: 219px;
+  background-color: gray;
+}
+
+.footer_top_wrap {
+  border-bottom: 1px solid rgb(100, 100, 100);
+}
+
+.footer_top {
+  width: 920px;
+  height: 30%;
+  margin:0 auto;
+  display: flex;
+  padding: 15px 0;
+}
+
+.footer_top_notice {
+  display: flex;
+  justify-content: space-evenly;
+  width: 35%;
+}
+
+#notice_text {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+#notice_detail {
+  font-size: 13px;
+}
+
+#notice_detail a {
+  text-decoration: none;
+  color: black;
+}
+.footer_list {
+  width: 50%;
+  /* background-color: red; */
+  margin-left: 20px;
+}
+
+.footer_list ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+ 
+}
+
+.footer_list li {
+  font-weight: bold;
+}
+
+.footer_list a {
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+  
+}
+/* --------------------------- footer_bottom ----------------------------------- */
+.footer_bottom {
+  width: 920px;
+  height: 30%;
+  margin:0 auto;
+  display: flex;
+  padding: 15px 0;
+}
+
+.footer_bottom_list ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+ 
+}
+
+.footer_bottom_list a {
+  text-decoration: none;
+  color: black;
+  font-size: 13px;
+  
+}
+
+.footer_bottom_notice {
+  font-size: 10px;
+}
+
+.footer_bottom_logo{
+  /* background-color: red; */
+  text-align: center;
+}
