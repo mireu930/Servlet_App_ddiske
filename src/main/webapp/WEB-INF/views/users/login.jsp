@@ -23,7 +23,7 @@
 	</section>
 
 	<div class="contents_main">
-		<div class="login_box">
+		<div class="in_box">
 			<form class="add_input" action="./login.do" method="post">
 				<div class="title">로그인</div>
 				<div class="subtitle">ID, PW 입력하기</div>

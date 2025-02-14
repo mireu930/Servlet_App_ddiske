@@ -2,9 +2,15 @@ package com.root.app.accounts;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
+import com.root.app.users.UserDTO;
 import com.root.app.utils.DBConnection;
+
+import oracle.jdbc.proxy.annotation.Pre;
 
 public class AccountDAO {
 	
@@ -22,6 +28,29 @@ public class AccountDAO {
 		
 		return result;
 		
+	}
+	
+	public List<AccountDTO> getList(UserDTO userDTO) throws Exception {
+		Connection connection = DBConnection.getConnection();
+		String sql = "SELECT * FROM ACCOUNTS WHERE USERNAME = ?";
+		PreparedStatement st = connection.prepareStatement(sql);
+		st.setString(1, userDTO.getUserName());
+		ResultSet rs = st.executeQuery();
+		List<AccountDTO> ar = new ArrayList<AccountDTO>();
+		
+		while(rs.next()) {
+			AccountDTO accountDTO = new AccountDTO();
+			accountDTO.setAccountBalance(rs.getLong("accountbalance"));
+			accountDTO.setAccountDate(rs.getDate("accountdate"));
+			accountDTO.setAccountNum(rs.getString("accountnum"));
+			accountDTO.setProductNum(rs.getLong("productnum"));
+			accountDTO.setUserName(rs.getString("username"));
+			ar.add(accountDTO);
+		}
+		
+		DBConnection.disConnect(rs, st, connection);
+		
+		return ar;
 	}
 	
 	

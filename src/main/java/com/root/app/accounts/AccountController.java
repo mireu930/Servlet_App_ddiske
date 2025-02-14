@@ -47,6 +47,10 @@ public class AccountController extends HttpServlet {
 			case "add.do":
 				accountService.add(request, actionForward);
 				break;
+
+			case "list.do":
+				accountService.getList(request, actionForward);
+				break;
 			}
 
 		} catch (Exception e) {

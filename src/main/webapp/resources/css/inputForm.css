@@ -1,4 +1,4 @@
-.login_box {
+.in_box {
   align-items: flex-start;
   background-color: #000;
   display: flex;
@@ -44,6 +44,18 @@
 }
 
 .ic2 {
+  margin-top: 30px;
+}
+
+.ic3 {
+  margin-top: 30px;
+}
+
+.ic4 {
+  margin-top: 30px;
+}
+
+.ic5 {
   margin-top: 30px;
 }
 

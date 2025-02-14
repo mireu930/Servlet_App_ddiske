@@ -7,34 +7,36 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <c:import url="/WEB-INF/views/template/common.jsp"></c:import>
+<link rel="stylesheet" href="/resources/css/list.css">
 </head>
 <body>
 	<div class="header">
 		<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
 	</div>
 	<div class="contents">
-		<nav class="nav">
-			<ul class="contents_top">
-				<li><a href="/index.do">홈으로</a></li>
-				<li><a href="/products/list.do">상품 둘러보기</a></li>
-				<li><a href="/users/update.do">정보 수정</a></li>
-				<li><a href="/accounts/list.do">가입 내역 보기</a></li>
-			</ul>
-
-		</nav>
-
-
+		<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
 	</div>
+
 	<div class="contents_main">
-		<div class="contents_detail">
-			<h3>Username : ${sessionScope.user.userName }</h3>
-			<br>
-			<h3>Name : ${sessionScope.user.name }</h3>
-			<br>
-			<h3>Phone : ${sessionScope.user.phone }</h3>
-			<br>
-			<h3>Email : ${sessionScope.user.email }</h3>
-			<br>
+		<div class="contents_main_list">
+			<table class="table_sprite">
+				<thead>
+					<tr>
+						<th>계좌 번호</th>
+						<th>잔액</th>
+						<th>가입일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:forEach items="${list}" var="dto">
+						<tr>
+							<td>${dto.accountNum }</td>
+							<td>${dto.accountBalance }</td>
+							<td>${dto.accountDate }</td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
 		</div>
 	</div>
 	<c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
