@@ -14,7 +14,13 @@
 		<c:import url="/WEB-INF/views/template/header.jsp"></c:import>
 	</div>
 	<div class="contents">
-		<c:import url="/WEB-INF/views/template/nav.jsp"></c:import>
+		<nav class="nav">
+			<ul class="contents_top">
+				<li><a href="/products/list.do">홈으로</a></li>
+				<li><a href="/products/list.do">My Page</a></li>
+				<li><a href="/products/add.do">상품 조회</a></li>
+			</ul>
+		</nav>
 	</div>
 
 	<div class="contents_main">

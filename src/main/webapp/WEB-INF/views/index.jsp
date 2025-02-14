@@ -21,8 +21,7 @@
 		</nav>
 	</section>
 	<div class="contents_main">
-		<img src="/resources/images/i1.jpeg">
-		<img src="/resources/images/i2.jpeg">
+		<img src="/resources/images/book_yes24.jpg">
 	</div>
 	<c:import url="/WEB-INF/views/template/footer.jsp"></c:import>
 </body>
