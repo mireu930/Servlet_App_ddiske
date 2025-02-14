@@ -47,7 +47,7 @@
       <div class="soccer_detail_wrap">
         <div class="soccer_detail">
           <ul>
-            <li><a href="./add.do">계좌추가</a></li>
+            <li><a href="/products/list.do">계좌추가</a></li>
           </ul>
         </div>
       </div>

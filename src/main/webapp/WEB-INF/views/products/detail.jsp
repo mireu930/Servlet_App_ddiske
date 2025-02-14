@@ -14,6 +14,7 @@
   <div class="content">
   <table>
 		<c:if test="${not empty dto}">
+		<c:if test="${not empty user}">
 	  	<thead>
 	  		<tr>
 	  			<th>상품번호</th>
@@ -32,7 +33,34 @@
 				<td><h3>${dto.productDate}</h3></td>
 			
 			</tr>
+			<tr>
+			<td>
+				<a href="/accounts/add.do?productNum=${dto.productNum}">내계좌추가</a>
+			</td>
+			</tr>
+
 		</tbody>
+		</c:if>
+		<c:if test="${empty user}">
+			<thead>
+	  		<tr>
+	  			<th>상품번호</th>
+	  			<th>상품이름</th>
+	  			<th>상품상세설명</th>
+	  			<th>이자율</th>
+	  			<th>상품기간</th>
+	  		</tr>
+	  	</thead>
+	  	<tbody>
+	  		<tr>
+				<td><h3>${dto.productNum}</h3></td>
+				<td><h3>${dto.productName}</h3></td>
+				<td><h3>${dto.productDetail}</h3></td>
+				<td><h3>${dto.productRate}</h3></td>
+				<td><h3>${dto.productDate}</h3></td>
+			</tr>
+			</tbody>
+		</c:if>
 		</c:if>
 	</table>
 		<c:if test="${empty dto}">

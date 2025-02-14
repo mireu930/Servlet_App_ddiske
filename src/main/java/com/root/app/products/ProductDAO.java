@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.root.app.utils.DBConnection;
+import com.root.app.utls.DBConnection;
 
 public class ProductDAO {
 
@@ -29,7 +29,7 @@ public class ProductDAO {
 			
 			ar.add(productDTO);
 		}
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return ar;
 	}
@@ -54,7 +54,7 @@ public class ProductDAO {
 			productDTO = null;
 		}
 		
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return productDTO;
 	}
@@ -71,7 +71,7 @@ public class ProductDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 	}
@@ -91,7 +91,7 @@ public class ProductDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		System.out.println(result);
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 		

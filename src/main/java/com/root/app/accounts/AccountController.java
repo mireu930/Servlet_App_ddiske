@@ -50,14 +50,7 @@ System.out.println("accountController");
 				accountService.getDetail(request, actionFoward);
 				
 			} else if(uri.equals("add.do")) {
-				String method = request.getMethod();
-				
-				if(method.toUpperCase().equals("POST")) {
 					accountService.add(request, actionFoward);
-				} else {
-					actionFoward.setFlag(true);
-					actionFoward.setPath("/WEB-INF/views/accounts/add.jsp");
-				}
 				
 			} else if(uri.equals("update.do")) {
 				String method = request.getMethod();

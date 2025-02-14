@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import com.root.app.utils.DBConnection;
+import com.root.app.utls.DBConnection;
 
 public class UserDAO {
 
@@ -28,7 +28,7 @@ public class UserDAO {
 			userDTO = null;
 		}
 		
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return userDTO;
 	}
@@ -47,7 +47,7 @@ public class UserDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 	}
@@ -67,7 +67,7 @@ public class UserDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 	}

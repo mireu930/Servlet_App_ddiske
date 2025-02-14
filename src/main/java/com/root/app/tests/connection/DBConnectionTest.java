@@ -1,4 +1,4 @@
-package com.root.app.ztests.connection;
+package com.root.app.tests.connection;
 
 import java.sql.Connection;
 
@@ -10,14 +10,14 @@ public class DBConnectionTest {
 		try {
 			Connection connection = DBConnection.getConnection();
 			
-			System.out.println(connection);
-			
+			if(connection != null) {
+				System.out.println("통과");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
 	}
 
 }
