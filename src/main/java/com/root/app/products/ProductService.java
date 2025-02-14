@@ -75,16 +75,10 @@ public class ProductService {
 		
 		
 		int result = productDAO.update(productDTO);
-		String str = "실패";
-		if(result>0) {
-			actionFoward.setFlag(false);
-			actionFoward.setPath("./detail.do");
-		}else {
-			request.setAttribute("result", str);
-			request.setAttribute("path", "./list.do");
-			actionFoward.setFlag(true);
-			actionFoward.setPath("/WEB-INF/views/commons/result.jsp");
-		}
+
+		actionFoward.setFlag(false);
+		actionFoward.setPath("./detail.do");
+		
 		
 		}
 
