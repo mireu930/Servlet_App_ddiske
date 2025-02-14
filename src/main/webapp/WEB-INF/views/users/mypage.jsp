@@ -12,9 +12,9 @@
 	<c:if test="${not empty user}">
 		<h3>${user.user_name}</h3>
 		<h3>${user.password}</h3>
-		<h3>${user2.name}</h3>
-		<h3>${user2.phone}</h3>
-		<h3>${user2.email}</h3>
+		<h3>${user.name}</h3>
+		<h3>${user.phone}</h3>
+		<h3>${user.email}</h3>
 	</c:if>
 	
 	<c:if test="${empty user}">

@@ -8,19 +8,22 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.root.app.products.ProductDTO;
+import com.root.app.users.UserDTO;
 import com.root.app.utils.DBConnection;
 import com.root.app.ztests.connection.DBConnectionTest;
 
 public class AccountDAO {
 	
-	public List<AccountDTO> getList() throws Exception {
+	public List<AccountDTO> getList(UserDTO userDTO) throws Exception {
 		Connection connection = DBConnection.getConnection();
-		String sql = "SELECT * FROM ACCOUNTS ORDER BY accountdate asc";
+		String sql = "SELECT * FROM ACCOUNTS WHERE USER_NAME =? ";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setString(1, userDTO.getUser_name());
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
-		List<AccountDTO> ar = new ArrayList();
+		List<AccountDTO> ar = new ArrayList<AccountDTO>();
 		
 		while(resultSet.next()){
 			AccountDTO accountDTO = new AccountDTO();
@@ -47,14 +50,13 @@ public class AccountDAO {
 		
 		ResultSet resultSet = preparedStatement.executeQuery();
 		
-		if(resultSet.next()){
+		
+		while(resultSet.next()){
 			accountDTO.setAccountNum(resultSet.getString(1));
 			accountDTO.setProductNum(resultSet.getInt(2));
 			accountDTO.setUser_name(resultSet.getString(3));
 			accountDTO.setAccountsBalance(resultSet.getLong(4));
 			accountDTO.setAccountDate(resultSet.getDate(5));
-		} else {
-			accountDTO = null;
 		}
 		
 		DBConnection.disConnect(resultSet, preparedStatement, connection);

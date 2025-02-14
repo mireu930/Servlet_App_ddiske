@@ -1,9 +1,12 @@
 package com.root.app.accounts;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import java.util.List;
 
 
 import com.root.app.ActionFoward;
+import com.root.app.users.UserDTO;
 
 public class AccountService {
 	
@@ -13,15 +16,24 @@ public class AccountService {
 		accountDAO = new AccountDAO();
 	}
 	
-	public ActionFoward getList(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
-		List<AccountDTO> ar = accountDAO.getList();
+	public void getList(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
+		HttpSession session = request.getSession();
 		
-		request.setAttribute("list", ar);
+		UserDTO userDTO = (UserDTO)session.getAttribute("user");
+		
+		if(userDTO==null) {
+			request.setAttribute("result", "로그인이필요합니다.");
+			request.setAttribute("path", "../users/login.do");
+			
+			actionFoward.setFlag(true);
+			actionFoward.setPath("/WEB-INF/views/alert/result.jsp");
+			
+		}else {
+		request.setAttribute("list", accountDAO.getList(userDTO));
 		
 		actionFoward.setFlag(true);
 		actionFoward.setPath("/WEB-INF/views/accounts/list.jsp");
-		
-		return actionFoward;
+		}
 	}
 	
 	public void getDetail(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
@@ -36,7 +48,14 @@ public class AccountService {
 	}
 	
 	public void add(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
+		HttpSession session = request.getSession();
 		AccountDTO accountDTO = new AccountDTO();
+		
+		UserDTO userDTO = (UserDTO)session.getAttribute("user");
+		
+		if(userDTO == null) {
+			request.setAttribute("path", "../users/login.do");
+		}else {
 		
 		accountDTO.setProductNum(Integer.parseInt(request.getParameter("productNum")));
 		accountDTO.setUser_name(request.getParameter("user_name"));
@@ -45,6 +64,7 @@ public class AccountService {
 		
 		actionFoward.setFlag(false);
 		actionFoward.setPath("./list.do");
+		}
 	}
 	
 	public void update(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
@@ -69,9 +89,17 @@ public class AccountService {
 		
 		
 		int result = accountDAO.update(accountDTO);
-		
+		if(result > 0) {
+			request.setAttribute("dto", accountDAO.getDetail(accountDTO));
 			actionFoward.setFlag(false);
 			actionFoward.setPath("./detail.do");
+		}else {
+			request.setAttribute("result","실패");
+			request.setAttribute("path", "./update.do");
+			
+			actionFoward.setFlag(true);
+			actionFoward.setPath("/WEB-INF/views/alert/result.jsp");
+		}
 	}
 
 }

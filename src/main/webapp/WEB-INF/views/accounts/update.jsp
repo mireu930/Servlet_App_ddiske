@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action = "./detail.do" method = "post">
-		<input type="text" name ="accountNum" value = "${dto.accountNum}" readonly>
+		<input type="text" name ="accountNum" value = "${dto.accountNum}" >
 		<input type="text" name ="productNum" value = "${dto.productNum}">
 		<input type="text" name ="user_name" value = "${dto.user_name}">
 		<input type="text" name ="accountsBalance" value = "${dto.accountsBalance}">

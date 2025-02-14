@@ -79,7 +79,6 @@ public class UserController extends HttpServlet {
 				actionFoward.setPath("../index.do");
 				
 			} else if(uri.equals("mypage.do")) {
-				userService.detail(request, actionFoward);
 				
 				actionFoward.setFlag(true);
 				actionFoward.setPath("/WEB-INF/views/users/mypage.jsp");
@@ -89,7 +88,6 @@ public class UserController extends HttpServlet {
 				if(method.toUpperCase().equals("POST")) {
 					userService.update(request, actionFoward);
 				} else {
-					userService.login(request, actionFoward);
 					
 					actionFoward.setFlag(true);
 					actionFoward.setPath("/WEB-INF/views/users/update.jsp");

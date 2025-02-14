@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="footer">
     <div class="footer_top_wrap">
       <div class="footer_top">
@@ -19,7 +20,17 @@
     <div class="footer_bottom">
       <div class="footer_bottom_list">
       <ul>
-        <li><a href="/users/login.do">로그인</a></li>
+        <c:if test="${empty user}">
+          	<ul>
+            <li><a id="log" href="/users/login.do">로그인</a></li>
+            </ul>
+          	</c:if>
+
+          	<c:if test="${not empty user}">
+          	<ul>
+			<li><a id="log" href ="/users/logout.do">로그아웃</a></li>
+          	</ul>
+			</c:if>
         <li><a href="#">전체서비스</a></li>
         <li><a href="#">고객센터</a></li>
         <li><a href="#">문제신고</a></li>

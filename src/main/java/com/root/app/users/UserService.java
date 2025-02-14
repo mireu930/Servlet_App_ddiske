@@ -81,11 +81,7 @@ public class UserService {
 		int result = userDAO.update(userDTO);
 		
 		if(result > 0) {
-			session.setUser_name(userDTO.getUser_name());
-			session.setPassword(userDTO.getPassword());
-			session.setName(userDTO.getName());
-			session.setPhone(userDTO.getPhone());
-			session.setEmail(userDTO.getEmail());
+			request.getSession().setAttribute("user", userDAO.login(userDTO));
 		}
 		
 		actionFoward.setFlag(false);

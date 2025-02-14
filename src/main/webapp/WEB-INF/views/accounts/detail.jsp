@@ -25,11 +25,11 @@
   	</thead>
   	<tbody>
 		<tr>
-			<td><h3>${dto.accountNum}</h3></td>
-			<td><h3>${dto.productNum}</h3></td>
-			<td><h3>${dto.user_name}</h3></td>
-			<td><h3>${dto.accountsBalance}</h3></td>
-			<td><h3>${dto.accountDate}</h3></td>
+			<td><h3>${requestScope.dto.accountNum}</h3></td>
+			<td><h3>${requestScope.dto.productNum}</h3></td>
+			<td><h3>${requestScope.dto.user_name}</h3></td>
+			<td><h3>${requestScope.dto.accountsBalance}</h3></td>
+			<td><h3>${requestScope.dto.accountDate}</h3></td>
 		</tr>
 	</tbody>
 	</c:if>
