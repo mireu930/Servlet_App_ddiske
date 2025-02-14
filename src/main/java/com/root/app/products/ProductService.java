@@ -27,6 +27,7 @@ public class ProductService {
 	public void getDetail(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
 		String id = request.getParameter("productNum");
 		ProductDTO productDTO = new ProductDTO();
+		
 		productDTO.setProductNum(Integer.parseInt(id));
 		productDTO = productDAO.getDetail(productDTO);
 		request.setAttribute("dto", productDTO);
@@ -74,7 +75,7 @@ public class ProductService {
 		
 		if(result>0) {
 			actionFoward.setFlag(false);
-			actionFoward.setPath("./detail.do?productNum="+Integer.parseInt(request.getParameter("productNum")));
+			actionFoward.setPath("./detail.do?productNum="+request.getParameter("productNum"));
 			
 		} else {
 			request.setAttribute("result", "실패");

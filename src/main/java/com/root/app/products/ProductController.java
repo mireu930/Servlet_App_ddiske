@@ -67,6 +67,7 @@ public class ProductController extends HttpServlet {
 					productService.updateProcess(request, actionFoward);
 				} else {
 					productService.update(request, actionFoward);
+					
 				}
 			}
 			
