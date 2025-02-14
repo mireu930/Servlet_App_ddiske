@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import com.root.app.ActionFoward;
+import com.root.app.accounts.AccountDAO;
 
 public class ProductService {
 	private ProductDAO productDAO;
@@ -64,22 +65,24 @@ public class ProductService {
 	public void updateProcess(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
 		ProductDTO productDTO = new ProductDTO();
 		
-//		String productRateStr = request.getParameter("productRate");
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-/MM-dd");
-//		java.util.Date parsedDate = sdf.parse(productRateStr);
-		
 		productDTO.setProductName(request.getParameter("productName"));
 		productDTO.setProductDetail(request.getParameter("productDetail"));
 		productDTO.setProductRate(Double.parseDouble(request.getParameter("productRate")));
-//		productDTO.setProductDate(parsedDate.getTime());
-		
+		productDTO.setProductNum(Integer.parseInt(request.getParameter("productNum")));
 		
 		int result = productDAO.update(productDTO);
-
-		actionFoward.setFlag(false);
-		actionFoward.setPath("./detail.do");
 		
-		
+		if(result>0) {
+			actionFoward.setFlag(false);
+			actionFoward.setPath("./detail.do?productNum="+Integer.parseInt(request.getParameter("productNum")));
+			
+		} else {
+			request.setAttribute("result", "실패");
+			request.setAttribute("path", "./update.do?productNum="+Integer.parseInt(request.getParameter("productNum")));
+			
+			actionFoward.setFlag(true);
+			actionFoward.setPath("/WEB-INF/views/alert/result.jsp");
 		}
+	}
 
 }

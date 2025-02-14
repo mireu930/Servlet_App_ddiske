@@ -88,7 +88,6 @@ public class UserController extends HttpServlet {
 				if(method.toUpperCase().equals("POST")) {
 					userService.update(request, actionFoward);
 				} else {
-					
 					actionFoward.setFlag(true);
 					actionFoward.setPath("/WEB-INF/views/users/update.jsp");
 				}

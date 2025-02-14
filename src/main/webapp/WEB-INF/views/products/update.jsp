@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action = "./detail.do" method = "post">
+	<form action = "./update.do" method = "post">
 		<input type="text" name ="productNum" value = "${dto.productNum}" readonly>
 		<input type="text" name ="productName" value = "${dto.productName}">
 		<input type="text" name ="productDetail" value = "${dto.productDetail}">

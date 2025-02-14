@@ -69,19 +69,19 @@ public class UserService {
 	
 	public void update(HttpServletRequest request, ActionFoward actionFoward) throws Exception  {
 		UserDTO session = (UserDTO)request.getSession().getAttribute("user");
-		UserDTO userDTO = new UserDTO();
+//		UserDTO userDTO = new UserDTO();
 		
-		userDTO.setUser_name(session.getUser_name());
-		userDTO.setPassword(session.getPassword());
-		userDTO.setName(session.getName());
-		userDTO.setPhone(session.getPhone());
-		userDTO.setEmail(session.getEmail());
-		userDTO.setUser_name(session.getUser_name());
+		session.setUser_name(request.getParameter("user_name"));
+		session.setPassword(request.getParameter("password"));
+		session.setName(request.getParameter("name"));
+		session.setPhone(request.getParameter("phone"));
+		session.setEmail(request.getParameter("email"));
+		session.setUser_name(session.getUser_name());
 		
-		int result = userDAO.update(userDTO);
-		
+		int result = userDAO.update(session);
+		System.out.println(result);
 		if(result > 0) {
-			request.getSession().setAttribute("user", userDAO.login(userDTO));
+			request.getSession().setAttribute("user2", userDAO.login(session));
 		}
 		
 		actionFoward.setFlag(false);

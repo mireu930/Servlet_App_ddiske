@@ -82,13 +82,15 @@ public class ProductDAO {
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		
 		preparedStatement.setString(1, productDTO.getProductName());
+		System.out.println(productDTO.getProductName());
 		preparedStatement.setString(2, productDTO.getProductDetail());
 		preparedStatement.setDouble(3, productDTO.getProductRate());
 //		preparedStatement.setDate(4, productDTO.getProductDate());
 		preparedStatement.setInt(4, productDTO.getProductNum());
+		System.out.println(productDTO.getProductNum());
 		
 		int result = preparedStatement.executeUpdate();
-		
+		System.out.println(result);
 		DBConnection.disConnect(preparedStatement, connection);
 		
 		return result;

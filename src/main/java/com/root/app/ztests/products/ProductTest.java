@@ -19,8 +19,8 @@ public class ProductTest {
 			
 			productDTO.setProductName("부자적금");
 			productDTO.setProductRate(0.12);
-			productDTO.setProductDetail("잉?");
-			productDTO.setProductDate(Date.valueOf("2009-12-05"));
+			productDTO.setProductDetail("잉??");
+//			productDTO.setProductDate(Date.valueOf("2009-12-05"));
 			productDTO.setProductNum(1);
 			
 			int result = productDAO.update(productDTO);
