@@ -15,7 +15,7 @@
         	<c:if test="${empty user}">
           	<ul>
             <li><a id="log" href="/users/login.do">로그인</a></li>
-            <li><a id="menu" href="/users/join.do">사원등록</a></li>
+            <li><a id="menu" href="/users/join.do">회원가입</a></li>
             </ul>
           	</c:if>
 

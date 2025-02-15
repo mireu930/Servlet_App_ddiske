@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="../resources/css/add.css">
 </head>
 <body>
-	<h3>사원등록</h3>
+	<h3>회원가입</h3>
 	<form action = "join.do" method = "post">
 		<fieldset>
 			<input type = "text" name = "user_name" placeholder="아이디">
@@ -30,5 +30,6 @@
 			<input type ="submit" value = "등록">
 		</fieldset>
 	</form>
+	<a href ="../index.do">홈</a>
 </body>
 </html>

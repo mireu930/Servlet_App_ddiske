@@ -24,6 +24,6 @@
 		</fieldset>
 		
 	</form>
-	
+	<a href ="../index.do">홈</a>
 </body>
 </html>

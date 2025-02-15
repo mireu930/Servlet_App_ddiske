@@ -11,11 +11,11 @@
           </ul>
         </div>
         <div class="header_logo_in">
-          <ul>
+
         	<c:if test="${empty user}">
           	<ul>
             <li><a id="log" href="/users/login.do">로그인</a></li>
-            <li><a id="menu" href="/users/join.do">사원등록</a></li>
+            <li><a id="menu" href="/users/join.do">회원가입</a></li>
             </ul>
           	</c:if>
 
@@ -25,7 +25,7 @@
 			 <li><a id="menu" href ="/users/mypage.do">마이페이지</a></li>
           	</ul>
 			</c:if>
-          </ul>
+
         </div>
       </div>
     </div>
