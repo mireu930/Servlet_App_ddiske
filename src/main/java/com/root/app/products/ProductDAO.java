@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.root.app.utls.DBConnection;
+import com.root.app.utils.DBConnection;
 
 public class ProductDAO {
 
@@ -95,5 +95,19 @@ public class ProductDAO {
 		
 		return result;
 		
+	}
+	
+	public int delete(ProductDTO productDTO) throws Exception {
+		Connection connection = DBConnection.getConnection();
+		String sql = "DELETE products WHERE productnum = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setInt(1, productDTO.getProductNum());
+		
+		int result = preparedStatement.executeUpdate();
+		
+		DBConnection.disConnection(preparedStatement, connection);
+		
+		return result;
 	}
 }

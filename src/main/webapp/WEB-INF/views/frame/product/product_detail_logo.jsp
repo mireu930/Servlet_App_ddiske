@@ -49,8 +49,9 @@
             <li>|</li>
             <li><a href="./update.do?productNum=${dto.productNum}">상품수정</a></li>
             <li>|</li>
-            <li><a href="#">상품삭제</a></li>
-
+            <c:if test="${not empty user.user_name and user.user_name == 'sss' }">
+            <li><a href="./delete.do?productNum=${dto.productNum}" onclick = "if(!confirm('삭제하시겠습니까?')) return false" class="btn btn-outline-danger btn-sm">상품삭제</a></li>
+			</c:if>
           </ul>
         </div>
       </div>

@@ -2,7 +2,7 @@ package com.root.app.ztests.connection;
 
 import java.sql.Connection;
 
-import com.root.app.utls.DBConnection;
+import com.root.app.utils.DBConnection;
 
 public class DBConnectionTest {
 

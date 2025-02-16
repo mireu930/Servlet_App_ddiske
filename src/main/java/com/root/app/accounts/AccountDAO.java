@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.root.app.products.ProductDTO;
 import com.root.app.users.UserDTO;
-import com.root.app.utls.DBConnection;
+import com.root.app.utils.DBConnection;
 import com.root.app.ztests.connection.DBConnectionTest;
 
 public class AccountDAO {
