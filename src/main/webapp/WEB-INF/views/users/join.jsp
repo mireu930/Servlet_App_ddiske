@@ -29,31 +29,31 @@
 				<div class="title">회원가입</div>
 				<div class="subtitle">정보 입력</div>
 				<fieldset class="input-container ic1">
-					<legend>ID</legend>
+					<!-- <legend>ID</legend> -->
 					<input type="text" name="username" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="ID" class="placeholder">ID</label>
 				</fieldset>
 				<fieldset class="input-container ic2">
-					<legend>PASSWORD</legend>
+					<!-- <legend>PASSWORD</legend> -->
 					<input type="password" name="password" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="PASSWORD" class="placeholder">PASSWORD</label>
 				</fieldset>
 				<fieldset class="input-container ic3">
-					<legend>NAME</legend>
+					<!-- <legend>NAME</legend> -->
 					<input type="text" name="name" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="NAME" class="placeholder">NAME</label>
 				</fieldset>
 				<fieldset class="input-container ic4">
-					<legend>PHONE</legend>
+					<!-- <legend>PHONE</legend> -->
 					<input type="text" name="phone" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="PHONE" class="placeholder">PHONE</label>
 				</fieldset>
 				<fieldset class="input-container ic5">
-					<legend>EMAIL</legend>
+					<!-- <legend>EMAIL</legend> -->
 					<input type="text" name="email" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="EMAIL" class="placeholder">EMAIL</label>

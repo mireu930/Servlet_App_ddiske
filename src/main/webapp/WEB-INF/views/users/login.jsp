@@ -28,13 +28,13 @@
 				<div class="title">로그인</div>
 				<div class="subtitle">ID, PW 입력하기</div>
 				<fieldset class="input-container ic1">
-					<legend>ID</legend>
+					<!-- <legend>ID</legend> -->
 					<input type="text" name="username" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="ID" class="placeholder">ID</label>
 				</fieldset>
 				<fieldset class="input-container ic2">
-					<legend>PASSWORD</legend>
+					<!-- <legend>PASSWORD</legend> -->
 					<input type="password" name="password" class="input" placeholder=" ">
 					<div class="cut"></div>
 					<label for="PASSWORD" class="placeholder">PASSWORD</label>
