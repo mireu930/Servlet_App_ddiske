@@ -75,7 +75,7 @@ public class ProductService {
 		
 		if(result>0) {
 			actionFoward.setFlag(false);
-			actionFoward.setPath("./detail.do?productNum="+request.getParameter("productNum"));
+			actionFoward.setPath("./detail.do");
 			
 		} else {
 			request.setAttribute("result", "실패");
