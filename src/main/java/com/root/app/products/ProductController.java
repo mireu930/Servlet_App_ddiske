@@ -69,6 +69,8 @@ public class ProductController extends HttpServlet {
 					productService.update(request, actionFoward);
 					
 				}
+			} else if(uri.equals("delete.do")) {
+				productService.delete(request, actionFoward);
 			}
 			
 		} catch(Exception e) {

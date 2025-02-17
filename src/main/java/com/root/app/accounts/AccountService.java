@@ -58,12 +58,21 @@ public class AccountService {
 		}else {
 		
 		accountDTO.setProductNum(Integer.parseInt(request.getParameter("productNum")));
-		accountDTO.setUser_name(request.getParameter("user_name"));
+		accountDTO.setUser_name(userDTO.getUser_name());
 		
 		int result = accountDAO.add(accountDTO);
 		
-		actionFoward.setFlag(false);
-		actionFoward.setPath("./list.do");
+		String message ="추가실패";
+		
+		if(result>0) {
+			message="추가성공";
+		}
+		
+		request.setAttribute("result", message);
+		request.setAttribute("path", "./list.do");
+		
+		actionFoward.setFlag(true);
+		actionFoward.setPath("/WEB-INF/views/alert/result.jsp");
 		}
 	}
 	

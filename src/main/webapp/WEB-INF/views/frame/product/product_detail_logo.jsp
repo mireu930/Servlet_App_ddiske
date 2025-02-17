@@ -14,7 +14,7 @@
           <c:if test="${empty user}">
           	<ul>
             <li><a id="log" href="/users/login.do">로그인</a></li>
-            <li><a id="menu" href="/users/join.do">사원등록</a></li>
+            <li><a id="menu" href="/users/join.do">회원가입</a></li>
             </ul>
           	</c:if>
 
@@ -49,8 +49,9 @@
             <li>|</li>
             <li><a href="./update.do?productNum=${dto.productNum}">상품수정</a></li>
             <li>|</li>
-            <li><a href="#">상품삭제</a></li>
-
+            <c:if test="${not empty user.user_name and user.user_name == 'sss' }">
+            <li><a href="./delete.do?productNum=${dto.productNum}" onclick = "if(!confirm('삭제하시겠습니까?')) return false" class="btn btn-outline-danger btn-sm">상품삭제</a></li>
+			</c:if>
           </ul>
         </div>
       </div>

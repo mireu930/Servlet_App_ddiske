@@ -36,7 +36,7 @@ public class AccountDAO {
 			ar.add(accountDTO);
 		}
 		
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return ar;
 	}
@@ -59,7 +59,7 @@ public class AccountDAO {
 			accountDTO.setAccountDate(resultSet.getDate(5));
 		}
 		
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return accountDTO;
 	}
@@ -89,7 +89,7 @@ public class AccountDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 	}
@@ -108,7 +108,7 @@ public class AccountDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 	}

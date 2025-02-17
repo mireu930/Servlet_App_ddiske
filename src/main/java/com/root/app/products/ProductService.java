@@ -85,5 +85,26 @@ public class ProductService {
 			actionFoward.setPath("/WEB-INF/views/alert/result.jsp");
 		}
 	}
+	
+	public void delete(HttpServletRequest request, ActionFoward actionFoward) throws Exception {
+		ProductDTO productDTO = new ProductDTO();
+		
+		productDTO.setProductNum(Integer.parseInt(request.getParameter("productNum")));
+		
+		int result = productDAO.delete(productDTO);
+		
+		
+			String message = "삭제실패";
+			
+			if(result >0) {
+				message = "삭제성공";
+			}
+			
+			request.setAttribute("result", message);
+			request.setAttribute("path", "./list.do");
+			
+			actionFoward.setFlag(true);
+			actionFoward.setPath("/WEB-INF/views/alert/result.jsp");
+		}
 
 }

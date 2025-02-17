@@ -29,7 +29,7 @@ public class ProductDAO {
 			
 			ar.add(productDTO);
 		}
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return ar;
 	}
@@ -54,7 +54,7 @@ public class ProductDAO {
 			productDTO = null;
 		}
 		
-		DBConnection.disConnect(resultSet, preparedStatement, connection);
+		DBConnection.disConnection(resultSet, preparedStatement, connection);
 		
 		return productDTO;
 	}
@@ -71,7 +71,7 @@ public class ProductDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 	}
@@ -91,9 +91,23 @@ public class ProductDAO {
 		
 		int result = preparedStatement.executeUpdate();
 		System.out.println(result);
-		DBConnection.disConnect(preparedStatement, connection);
+		DBConnection.disConnection(preparedStatement, connection);
 		
 		return result;
 		
+	}
+	
+	public int delete(ProductDTO productDTO) throws Exception {
+		Connection connection = DBConnection.getConnection();
+		String sql = "DELETE products WHERE productnum = ?";
+		PreparedStatement preparedStatement = connection.prepareStatement(sql);
+		
+		preparedStatement.setInt(1, productDTO.getProductNum());
+		
+		int result = preparedStatement.executeUpdate();
+		
+		DBConnection.disConnection(preparedStatement, connection);
+		
+		return result;
 	}
 }

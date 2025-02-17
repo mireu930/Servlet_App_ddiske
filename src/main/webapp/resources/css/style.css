@@ -33,15 +33,15 @@
   display: flex;
   list-style: none;
   /* background-color:red; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   
 }
 
 .header_logo_in ul {
-  display: flex;
+  /* display: flex; */
   list-style: none;
-  /* background-color:red; */
-  justify-content: space-between;
+   /* background-color:red;
+  justify-content: center; */
 }
 
 .header_logo a {
@@ -62,8 +62,8 @@
   height: 52px;
   width: 25%;
   margin: 10px 0 10px 650px;
-  /* background-color:aqua; */
-  padding-left: 5%;
+  display: flex;
+  justify-content: center;
 }
 
 #log, #menu {

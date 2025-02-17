@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel = "stylesheet" href ="../resources/css/add.css">
 </head>
 <body>
 	<form action = "./update.do" method = "post">
