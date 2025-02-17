@@ -32,8 +32,8 @@ public class ProductController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ActionForward actionForward = new ActionForward();
-//		actionForward.setFlag(true);
-//		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
+		actionForward.setFlag(true);
+		actionForward.setPath("/WEB-INF/views/errors/notfound.jsp");
 		
 		try {
 			String uri = request.getRequestURI();
@@ -72,13 +72,13 @@ public class ProductController extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-//		if(actionForward.isFlag()) {
+		if(actionForward.isFlag()) {
 			RequestDispatcher view = request.getRequestDispatcher(actionForward.getPath());
 			view.forward(request, response);			
-//		}else {
-//			// redirect
-//			response.sendRedirect(actionForward.getPath());
-//		}
+		}else {
+			// redirect
+			response.sendRedirect(actionForward.getPath());
+		}
 		
 	}
 

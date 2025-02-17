@@ -62,9 +62,9 @@ public class ProductService {
 		int result = productDAO.update(productDTO);
 		
 		if(result > 0) {
-			request.setAttribute("dto", productDAO.getDetail(productDTO));
+			request.setAttribute("product", productDAO.getDetail(productDTO));
 			actionForward.setFlag(false);
-			actionForward.setPath("./detail.do");
+			actionForward.setPath("./detail.do?productnum="+request.getParameter("productnum"));
 		}else {
 			request.setAttribute("result", "수정 실패");
 			request.setAttribute("path", "./update.do");

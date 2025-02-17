@@ -16,9 +16,9 @@
 	<div class="contents">
 		<nav class="nav">
 			<ul class="contents_top">
-				<li><a href="/products/list.do">홈으로</a></li>
-				<li><a href="/products/list.do">My Page</a></li>
-				<li><a href="/products/add.do">상품 조회</a></li>
+				<li><a href="/index.do">홈으로</a></li>
+				<li><a href="/users/mypage.do">My Page</a></li>
+				<li><a href="/products/list.do">상품 조회</a></li>
 			</ul>
 		</nav>
 	</div>
