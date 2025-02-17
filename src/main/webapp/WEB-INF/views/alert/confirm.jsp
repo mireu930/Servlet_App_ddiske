@@ -8,7 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
-		const isDelete = confirm("${confirm}");
+		const isDelete = confirm("삭제하시겠습니까?");
 		console.log(isDelete)
 	</script>
 </body>
